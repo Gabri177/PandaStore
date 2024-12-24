@@ -60,5 +60,15 @@
 			"title": "Éxito",
 			"message": "Cierre de sesión exitoso"
 		}
+	},
+	"drawer": {
+		"change_password": {
+			"title": "Cambiar contraseña",
+			"old_password_placeholder": "Contraseña antigua",
+			"new_password_placeholder": "Nueva contraseña",
+			"confirm_password_placeholder": "Confirmar contraseña",
+			"button_cancle": "Cancelar",
+			"button_confirm": "Confirmar"
+		}
 	}
 }

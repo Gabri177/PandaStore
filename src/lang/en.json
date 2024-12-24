@@ -62,6 +62,16 @@
 			"title": "Success",
 			"message": "Logout successful"
 		}
+	},
+	"drawer": {
+		"change_password": {
+			"title": "Change Password",
+			"old_password_placeholder": "Old Password",
+			"new_password_placeholder": "New Password",
+			"confirm_password_placeholder": "Confirm Password",
+			"button_cancle": "Cancle",
+			"button_confirm": "Confirm"
+		}
 	}
 }
   

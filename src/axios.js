@@ -22,6 +22,7 @@ service.interceptors.request.use(function (config) {
     }
     if (config.headers['Content-Type'] === 'application/x-www-form-urlencoded' && config.data) {
       config.data = qs.stringify(config.data); // 将数据序列化为 x-www-form-urlencoded 格式
+      console.log("序列化后的数据: ", config.data)
     }
 
     return config;

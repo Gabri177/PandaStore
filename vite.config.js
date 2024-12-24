@@ -21,7 +21,7 @@ export default defineConfig({
     proxy: {
 
       '/api': {
-            target: ' https://www.leecode.fun/swagger/',  // 这里后面应该填写自己服务器后端的地址
+            target: ' https://www.leecode.fun/',  // 这里后面应该填写自己服务器后端的地址
             changeOrigin: true,
             rewrite: (path) => path.replace(/^\/api/, ''),
           }

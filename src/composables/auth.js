@@ -1,6 +1,6 @@
 import { useCookies } from "@vueuse/integrations/useCookies.mjs"
 
-const token_key = "panda_admin_token"
+const token_key = "adminkey"
 
 const cookie = useCookies()
 

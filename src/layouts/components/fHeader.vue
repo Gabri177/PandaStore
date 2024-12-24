@@ -23,7 +23,7 @@
 				</span>
 				<template #dropdown>
 					<el-dropdown-menu>
-						<el-dropdown-item command="dp_reset_passwd">{{ $t('header.change_passwd') }}</el-dropdown-item>
+						<el-dropdown-item command="dp_reset_password">{{ $t('header.change_password') }}</el-dropdown-item>
 						<el-dropdown-item command="dp_logout">{{ $t('header.logout') }}</el-dropdown-item>
 					</el-dropdown-menu>
 				</template>
@@ -65,7 +65,7 @@ function handleRefresh() {
 
 function handleCommand(command) {
 	switch (command) {
-		case "dp_reset_passwd":
+		case "dp_reset_password":
 			
 			break;
 		case "dp_logout":

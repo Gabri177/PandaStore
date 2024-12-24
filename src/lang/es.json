@@ -23,12 +23,12 @@
 		"left_title_msg": "Bienvenido a la página de login de sesión",
 		"button_text": "Login",
 		"username_placeholder": "Nombre de usuario",
-		"passwd_placeholder": "Contraseña",
+		"password_placeholder": "Contraseña",
 		"right_title": "Bienvenido de nuevo",
 		"right_title_msg": "login con usurario y Contraseña",
 		"usernameError_empty": "El nombre de usuario no puede estar vacío",
-		"passwdError_empty": "No puede estar vacía",
-		"passwdError_length": "No puede tener menos de 4 caracteres",
+		"passwordError_empty": "No puede estar vacía",
+		"passwordError_length": "No puede tener menos de 4 caracteres",
 		"loginStatus_success": "Inicio de sesión exitoso",
 		"loginStatus_failed": "usuario o contraseña incorrectos",
 		"loginAlert_title_success": "Aviso de éxito",
@@ -44,7 +44,7 @@
 		"page_title": "Casa"
 	},
 	"header": {
-		"change_passwd": "Cambiar contraseña",
+		"change_password": "Cambiar contraseña",
 		"logout": "Cerrar sesión"
 	},
 	"popout": {

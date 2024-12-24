@@ -1,23 +1,25 @@
 import axios from '~/axios';
 
-export function login(username, password) {
-  return axios.post('/admin/login', {
-	username,
-	password
+export function login(data) {
+	console.log("username: ", data.username)
+	console.log("password: ", data.password)
+  return axios.post('/Admin/Login', {
+	username: data.username,
+	password: data.password
   });
 }
 
 export function getInfo() {
 
-	return axios.post('/admin/getInfo')
+	return axios.get('/Admin/TokenTest')
 }
 
 export function logout() {
 
-	return axios.post('/admin/logout')
+	return axios.post('/Admin/Logout')
 }
 
 export function updatePasswd(data) {
 
-	return axios.post('/admin/updatePasswd', data)
+	return axios.post('/Admin/UpdatePasswd', data)
 }

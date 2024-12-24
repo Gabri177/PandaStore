@@ -33,9 +33,9 @@
 				</el-form-item>
 
 				<el-form-item
-					prop="passwd"
+					prop="password"
 				>
-					<el-input v-model="form.passwd" type="password" :placeholder="$t('login.passwd_placeholder')" show-password>
+					<el-input v-model="form.password" type="password" :placeholder="$t('login.password_placeholder')" show-password>
 						<template #prefix>
 							<el-icon><Lock /></el-icon>
 						</template>
@@ -67,7 +67,7 @@ const { t } = useI18n()
 const form = reactive({
 
 	username: '',
-	passwd: ''
+	password: ''
 })
 
 
@@ -79,16 +79,16 @@ const	rules = reactive({
         trigger: 'blur',
       }
     ],
-    passwd: [
+    password: [
       {
         required: true,
-        message: () => t('login.passwdError_empty'),
+        message: () => t('login.passwordError_empty'),
         trigger: 'blur',
       },
       {
         min: 4,
         max: 13,
-        message: () => t('login.passwdError_length'),
+        message: () => t('login.passwordError_length'),
         trigger: 'blur',
       },
     ],
@@ -111,6 +111,9 @@ const onSubmit = async () => {
 
 			console.log("login success: " ,res.token)
 			router.push('/') 	
+		})
+		.catch((error) => {
+			console.log("login failed: ", error)
 		})
 		.finally(() => {
 			loading.value = false

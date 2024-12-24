@@ -25,12 +25,12 @@
 		"left_title_msg": "Welcome to the login page xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 		"button_text": "Login",
 		"username_placeholder": "Username",
-		"passwd_placeholder": "Password",
+		"password_placeholder": "Password",
 		"right_title": "Welcome back",
 		"right_title_msg": "login with username and password",
 		"usernameError_empty": "Username cannot be empty",
-		"passwdError_empty": "Password cannot be empty",
-		"passwdError_length": "Password cannot be less than 4 characters",
+		"passwordError_empty": "Password cannot be empty",
+		"passwordError_length": "Password cannot be less than 4 characters",
 		"loginStatus_success": "Login successful",
 		"loginStatus_failed": "username or password incorrect",
 		"loginAlert_title_success": "Success Notice",
@@ -46,7 +46,7 @@
 		"page_title": "Home"
 	},
 	"header": {
-		"change_passwd": "Change Password",
+		"change_password": "Change Password",
 		"logout": "Logout"
 	},
 	"popout": {

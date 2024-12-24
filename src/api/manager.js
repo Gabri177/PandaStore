@@ -1,0 +1,23 @@
+import axios from '~/axios';
+
+export function login(username, password) {
+  return axios.post('/admin/login', {
+	username,
+	password
+  });
+}
+
+export function getInfo() {
+
+	return axios.post('/admin/getInfo')
+}
+
+export function logout() {
+
+	return axios.post('/admin/logout')
+}
+
+export function updatePasswd(data) {
+
+	return axios.post('/admin/updatePasswd', data)
+}

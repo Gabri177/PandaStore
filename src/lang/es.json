@@ -1,0 +1,64 @@
+{
+	"message": {
+	  "hello": "Hola, Mundo!",
+	  "welcome": "Bienvenido a Vue.js"
+	},
+
+	"test": {
+		"index": "Inicio",
+		"about": "Sobre",
+		"contact": "Contrato",
+		"login": "Iniciar sesión",
+		"404": "404"
+	},
+	"NotFound": {
+		"page_title": "404 no encontrado",
+		"title": "404 no encontrado",
+		"subTitle": "Lo sentimos, la página que está buscando no se puede encontrar.",
+		"button_text": "Volver a la página de inicio"
+	},
+	"login": {
+		"page_title": "Iniciar sesión",
+		"left_title": "Bienvenido",
+		"left_title_msg": "Bienvenido a la página de login de sesión",
+		"button_text": "Login",
+		"username_placeholder": "Nombre de usuario",
+		"passwd_placeholder": "Contraseña",
+		"right_title": "Bienvenido de nuevo",
+		"right_title_msg": "login con usurario y Contraseña",
+		"usernameError_empty": "El nombre de usuario no puede estar vacío",
+		"passwdError_empty": "No puede estar vacía",
+		"passwdError_length": "No puede tener menos de 4 caracteres",
+		"loginStatus_success": "Inicio de sesión exitoso",
+		"loginStatus_failed": "usuario o contraseña incorrectos",
+		"loginAlert_title_success": "Aviso de éxito",
+		"loginAlert_title_failed": "Aviso de error"
+	},
+	"router_toast": {
+		"not_login_msg": "Por favor inicie sesión primero",
+		"not_login_title": "Advertencia",
+		"already_login_title": "Advertencia",
+		"already_login_msg": "Ya has iniciado sesión"
+	},
+	"index": {
+		"page_title": "Casa"
+	},
+	"header": {
+		"change_passwd": "Cambiar contraseña",
+		"logout": "Cerrar sesión"
+	},
+	"popout": {
+		"logout":{
+			"title": "Cerrar sesión",
+			"message": "¿Estás seguro de que quieres cerrar sesión?",
+			"confirm": "Sí",
+			"cancel": "No"
+		}
+	},
+	"toast": {
+		"logout":{
+			"title": "Éxito",
+			"message": "Cierre de sesión exitoso"
+		}
+	}
+}

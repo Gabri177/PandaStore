@@ -33,13 +33,66 @@
 			</el-dropdown>
 		</div>
 	</div>
+	<FormDrawer 
+	ref="formDrawer" 
+	:formTitle="t('drawer.change_password.title')"
+	:withHeader="true"
+	:confirmText="t('button.confirm')"
+	:cancelText="t('button.cancel')"
+	destroyOnClose="true"
+	@submit="onConfirm"
+	>
+		<el-form 
+			:model="form" 
+			:rules="rules" 
+			ref="formRef" 
+			label-width="80px"
+			>
+			<el-form-item 
+			prop="oldPassword"
+			:label="$t('drawer.change_password.old_password_label')"
+			label-position="top"
+			>
+				<el-input
+				v-model="form.oldPassword"
+				type="password"
+				show-password
+				:placeholder="$t('drawer.change_password.old_password_placeholder')"></el-input>
+			</el-form-item>
 
-	<el-drawer 
+			<el-form-item 
+			prop="newPassword"
+			:label="$t('drawer.change_password.new_password_label')"	
+			label-position="top"
+			>
+				<el-input
+				v-model="form.newPassword"
+				type="password"
+				show-password
+				:placeholder="$t('drawer.change_password.new_password_placeholder')"></el-input>
+			</el-form-item>
+
+			<el-form-item 
+			prop="confirmPassword"
+			:label="$t('drawer.change_password.confirm_password_label')"
+			label-position="top"
+			>
+				<el-input 
+				v-model="form.confirmPassword" 
+				type="password"
+				:placeholder="$t('drawer.change_password.confirm_password_placeholder')" 
+				show-password></el-input>
+			</el-form-item>
+
+		</el-form>
+	</FormDrawer>
+
+	<!-- <el-drawer 
 	v-model="showDrawer" 
 	:title="drawerTitle" 
 	:with-header="false" 
 	:close-on-click-modal="false" 
-	size="45%"
+	size="50%"
 	>
 		<div class="flex flex-col items-center mt-2/5">
 			<span 
@@ -52,26 +105,39 @@
 			:rules="rules" 
 			ref="formRef" 
 			class="mt-10 w-full"
+			label-width="80px"
 			>
-				<el-form-item prop="old_password">
+				<el-form-item 
+				prop="oldPassword"
+				:label="$t('drawer.change_password.old_password_label')"
+				label-position="top"
+				>
 					<el-input
-					v-model="form.old_password"
+					v-model="form.oldPassword"
 					type="password"
 					show-password
 					:placeholder="$t('drawer.change_password.old_password_placeholder')"></el-input>
 				</el-form-item>
 
-				<el-form-item prop="new_password">
+				<el-form-item 
+				prop="newPassword"
+				:label="$t('drawer.change_password.new_password_label')"	
+				label-position="top"
+				>
 					<el-input
-					v-model="form.new_password"
+					v-model="form.newPassword"
 					type="password"
 					show-password
 					:placeholder="$t('drawer.change_password.new_password_placeholder')"></el-input>
 				</el-form-item>
 
-				<el-form-item prop="confirm_password">
+				<el-form-item 
+				prop="confirmPassword"
+				:label="$t('drawer.change_password.confirm_password_label')"
+				label-position="top"
+				>
 					<el-input 
-					v-model="form.confirm_password" 
+					v-model="form.confirmPassword" 
 					type="password"
 					:placeholder="$t('drawer.change_password.confirm_password_placeholder')" 
 					show-password></el-input>
@@ -80,101 +146,57 @@
 				<div class="flex items-center justify-center mt-10">
 
 					<el-form-item>
-						<el-button class=" w-[100px] text-light-200 bg-blue-500" type="primary" @click="onCancle" round
-							:loading="loading">{{ $t('drawer.change_password.button_cancle') }}</el-button>
+						<el-button 
+						class=" w-[100px] text-light-200 bg-blue-500" 
+						type="primary" 
+						@click="onCancle" 
+						round
+						:loading="loading"
+						>
+							{{ $t('drawer.change_password.button_cancle') }}
+						</el-button>
 					</el-form-item>
 
 					<el-form-item>
-						<el-button class=" w-[100px] text-light-200 ml-5" type="primary" @click="onConfirm" round
-							color="rgb(42,77,208)" :loading="loading">{{ $t('drawer.change_password.button_confirm') }}</el-button>
+						<el-button 
+						class=" w-[100px] text-light-200 ml-5" 
+						type="primary" 
+						@click="onConfirm" 
+						round
+						color="rgb(42,77,208)" 
+						:loading="loading"
+						>
+							{{ $t('drawer.change_password.button_confirm') }}
+						</el-button>
 					</el-form-item>
 				</div>
 			</el-form>
 		</div>
-	</el-drawer>
+	</el-drawer> -->
 </template>
 
 <script setup>
 
-import { popOut, toast } from "~/composables/util"
-import { logout } from "~/api/manager"
-import { useRouter } from "vue-router";
-import { useStore } from "vuex";
-import lang from "~/lang";
 import { useFullscreen } from "@vueuse/core";
-import { ref, computed, reactive } from 'vue'
 import { useI18n } from 'vue-i18n';
+import FormDrawer from "~/components/FormDrawer.vue";
+import { useRepassword, useLogout } from "~/composables/useManager";
 
 
-////////////////////////form////////////////////////
-const loading = ref(false)
+const { isFullscreen, toggle } = useFullscreen()
+const {
+		formDrawer,
+		form,
+		rules,
+		formRef,
+		onConfirm,
+		openRepassword
+	} = useRepassword()
+const { handleLogout } = useLogout()
+
 
 const { t } = useI18n()
 
-const form = reactive({
-
-	old_password: '',
-	new_password: '',
-	confirm_password: ''
-})
-
-
-const rules = reactive({
-	username: [
-		{
-			required: true,
-			message: () => t('login.usernameError_empty'),
-			trigger: 'blur',
-		}
-	],
-	password: [
-		{
-			required: true,
-			message: () => t('login.passwordError_empty'),
-			trigger: 'blur',
-		},
-		{
-			min: 4,
-			max: 13,
-			message: () => t('login.passwordError_length'),
-			trigger: 'blur',
-		},
-	],
-});
-
-const formRef = ref(null)
-
-const onConfirm = async () => {
-
-	try {
-		const valid = await formRef.value.validate();
-		if (valid) {
-
-			console.log('submit')
-			console.log('context of the form: ', form)
-			console.log(formRef.value)
-		}
-		// loading.value = true
-
-
-	} catch (error) {
-		console.log(error)
-	}
-}
-
-const onCancle = () => {
-	showDrawer.value = false
-}
-////////////////////////form////////////////////////
-
-
-const showDrawer = ref(false)
-const { isFullscreen, toggle } = useFullscreen()
-
-const router = useRouter()
-const store = useStore()
-
-const drawerTitle = computed(() => t('drawer.change_password.title'))
 
 const handleRefresh = () => {
 	location.reload()
@@ -183,7 +205,8 @@ const handleRefresh = () => {
 function handleCommand(command) {
 	switch (command) {
 		case "dp_reset_password":
-			showDrawer.value = true
+			// showDrawer.value = true
+			openRepassword()
 			break;
 		case "dp_logout":
 			handleLogout()
@@ -191,19 +214,7 @@ function handleCommand(command) {
 	}
 }
 
-function handleLogout() {
 
-	popOut(t('popout.logout.title'), t("popout.logout.message"), t("popout.logout.confirm"), t("popout.logout.cancel"))
-		.then(async () => {
-			await logout()
-				.finally(() => {
-
-					store.dispatch("logout")
-					toast(t("toast.logout.title"), t("toast.logout.message"))
-					router.push({ path: "/login" })
-				})
-		})
-}
 </script>
 
 <style scoped>

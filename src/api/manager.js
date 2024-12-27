@@ -19,7 +19,7 @@ export function logout() {
 	return axios.post('/Admin/Logout')
 }
 
-export function updatePasswd(data) {
+export function changePassword(data) {
 
-	return axios.post('/Admin/UpdatePasswd', data)
+	return axios.post('/Admin/ChangePassword', data)
 }

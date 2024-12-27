@@ -61,6 +61,12 @@
 		"logout":{
 			"title": "Success",
 			"message": "Logout successful"
+		},
+		"change_password": {
+			"success_title": "Success",
+			"success_message": "Password change successful",
+			"error_title": "Error",
+			"error_message": "Password change failed"
 		}
 	},
 	"drawer": {
@@ -69,9 +75,17 @@
 			"old_password_placeholder": "Old Password",
 			"new_password_placeholder": "New Password",
 			"confirm_password_placeholder": "Confirm Password",
-			"button_cancle": "Cancle",
-			"button_confirm": "Confirm"
+			"old_passwordError_empty": "Old Password cannot be empty",
+			"new_passwordError_empty": "New Password cannot be empty",
+			"confirm_passwordError_empty": "Confirm Password cannot be empty",
+			"old_password_label": "Old Password",
+			"new_password_label": "New Password",
+			"confirm_password_label": "Confirm Password"
 		}
+	},
+	"button":{
+		"confirm": "Confirm",
+		"cancel": "Cancel"
 	}
 }
   

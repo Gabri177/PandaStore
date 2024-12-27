@@ -59,6 +59,12 @@
 		"logout":{
 			"title": "成功",
 			"message": "退出成功"
+		},
+		"change_password": {
+			"success_title": "成功",
+			"success_message": "密码修改成功",
+			"error_title": "错误",
+			"error_message": "密码修改失败"
 		}
 	},
 	"drawer": {
@@ -67,9 +73,17 @@
 			"old_password_placeholder": "旧密码",
 			"new_password_placeholder": "新密码",
 			"confirm_password_placeholder": "确认密码",
-			"button_cancle": "取消",
-			"button_confirm": "确认"
+			"old_passwordError_empty": "旧密码不能为空",
+			"new_passwordError_empty": "新密码不能为空",
+			"confirm_passwordError_empty": "确认密码不能为空",
+			"old_password_label": "旧密码",
+			"new_password_label": "新密码",
+			"confirm_password_label": "确认密码"
 		}
+	},
+	"button":{
+		"confirm": "确认",
+		"cancel": "取消"
 	}
 }
   

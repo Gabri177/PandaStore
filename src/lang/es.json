@@ -59,6 +59,12 @@
 		"logout":{
 			"title": "Éxito",
 			"message": "Cierre de sesión exitoso"
+		},
+		"change_password": {
+			"success_title": "Éxito",
+			"success_message": "Cambio de contraseña exitoso",
+			"error_title": "Error",
+			"error_message": "Error al cambiar la contraseña"
 		}
 	},
 	"drawer": {
@@ -67,8 +73,16 @@
 			"old_password_placeholder": "Contraseña antigua",
 			"new_password_placeholder": "Nueva contraseña",
 			"confirm_password_placeholder": "Confirmar contraseña",
-			"button_cancle": "Cancelar",
-			"button_confirm": "Confirmar"
+			"old_passwordError_empty": "La contraseña antigua no puede estar vacía",
+			"new_passwordError_empty": "La nueva contraseña no puede estar vacía",
+			"confirm_passwordError_empty": "La confirmación de la contraseña no puede estar vacía",
+			"old_password_label": "Contraseña antigua",
+			"new_password_label": "Nueva contraseña",
+			"confirm_password_label": "Confirmar contraseña"
 		}
+	},
+	"button": {
+		"confirm": "Confirmar",
+		"cancel": "Cancelar"
 	}
 }

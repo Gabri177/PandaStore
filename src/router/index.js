@@ -8,7 +8,6 @@ import NotFound from "~/pages/404.vue"
 import Login from "~/pages/login.vue"
 import lang from "~/lang"
 import Admin from "~/layouts/admin.vue"
-import Register from "~/pages/register.vue"
 
 const { t } = lang.global;
 const routes = [
@@ -30,12 +29,6 @@ const routes = [
 		component: Login,
 		meta: {
 			title: () => t('login.page_title')
-		}
-	}, {
-		path: '/register', 
-		component: Register,
-		meta: {
-			title: () => t('register.page_title')
 		}
 	}, {
 

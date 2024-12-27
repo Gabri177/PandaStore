@@ -44,12 +44,12 @@
 
 				<div class=" text-xs text-right mb-3">
 					{{ $t('login.no_account') }}
-					<router-link 
-					to="/register"
-					class="text-blue-500"
+					<span
+					@click="handleRegister"
+					class="text-blue-500 cursor-pointer"
 					>
 						{{ $t('login.register') }}
-					</router-link>
+					</span>
 				</div>
 
 				<el-form-item>
@@ -59,95 +59,114 @@
 
 		</el-col>
 	</el-row>
+
+	<FormDrawer 
+	ref="formDrawer" 
+	:formTitle="t('drawer.change_password.title')"
+	:withHeader="true"
+	:confirmText="t('button.confirm')"
+	:cancelText="t('button.cancel')"
+	destroyOnClose="true"
+	@submit="onConfirm"
+	>
+		<el-form 
+			:model="reg_form" 
+			:rules="reg_rules" 
+			ref="formRef" 
+			label-width="80px"
+			>
+			<el-form-item 
+			prop="oldPassword"
+			:label="$t('drawer.change_password.old_password_label')"
+			label-position="top"
+			>
+				<el-input
+				v-model="form.value1"
+				type="password"
+				show-password
+				:placeholder="$t('drawer.change_password.old_password_placeholder')"></el-input>
+			</el-form-item>
+
+			<el-form-item 
+			prop="newPassword"
+			:label="$t('drawer.change_password.new_password_label')"	
+			label-position="top"
+			>
+				<el-input
+				v-model="form.value2"
+				type="password"
+				show-password
+				:placeholder="$t('drawer.change_password.new_password_placeholder')"></el-input>
+			</el-form-item>
+
+			<el-form-item 
+			prop="confirmPassword"
+			:label="$t('drawer.change_password.confirm_password_label')"
+			label-position="top"
+			>
+				<el-input 
+				v-model="form.value3" 
+				type="password"
+				:placeholder="$t('drawer.change_password.confirm_password_placeholder')" 
+				show-password></el-input>
+			</el-form-item>
+
+		</el-form>
+	</FormDrawer>
+	
 </template>
 
 
 <script setup>
-import { reactive, onMounted, ref, onBeforeUnmount} from 'vue'
-import { useI18n } from 'vue-i18n';
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
 
-const store = useStore()
-const router = useRouter()
-const loading = ref(false)
+import FormDrawer from '~/components/FormDrawer.vue';
+import { useLogin } from '~/composables/useManager.js'
+import { lang } from '~/lang'
 
-const { t } = useI18n()
+const t = lang.global.t
 
-const form = reactive({
-
-	username: '',
-	password: ''
-})
+const {
+		form,
+		rules,
+		formRef,
+		onSubmit,
+		loading
+	} = useLogin();
 
 
-const	rules = reactive({
-    username: [
-      {
-        required: true,
-        message: () => t('login.usernameError_empty'),
-        trigger: 'blur',
-      }
-    ],
-    password: [
-      {
-        required: true,
-        message: () => t('login.passwordError_empty'),
-        trigger: 'blur',
-      },
-      {
-        min: 4,
-        max: 13,
-        message: () => t('login.passwordError_length'),
-        trigger: 'blur',
-      },
-    ],
-});
+import { ref, reactive } from 'vue'
 
-const formRef = ref(null)
+const formDrawer = ref(null)
 
-const onSubmit = async () => {
+const onConfirm = () => {
 	
-	try {
-		const valid = await formRef.value.validate();
-		if (valid) {
-
-			console.log ('submit')
-			console.log ('context of the form: ', form)
-			console.log (formRef.value)
-		}
-		loading.value = true
-		store.dispatch('login', form).then((res) => {
-
-			console.log("login success: " ,res.token)
-			router.push('/') 	
-		})
-		.catch((error) => {
-			console.log("login failed: ", error)
-		})
-		.finally(() => {
-			loading.value = false
-		})
-			
-	} catch (error) {
-		console.log(error)
-	}
+	// logic of confirm 
 }
 
-//实现Enter键登录
+const handleRegister = () => formDrawer.value.open()
 
-const onEnter = (e) => {
-	if (e.key === 'Enter') {
-		onSubmit()
-	}
-}
-
-onMounted(() => {
-	document.addEventListener('keyup', onEnter)
+const reg_form = reactive({
+	value1: '',
+	value2: '',
+	value3: ''
 })
 
-onBeforeUnmount(() => {
-	document.removeEventListener('keyup', onEnter)
+const reg_rules = reactive({
+	value1: [{ 
+			required: true, 
+			message: '请输入活动名称', 
+			trigger: 'blur' 
+	}],
+	value2: [{ 
+		required: true, 
+		message: '请选择活动区域', 
+		trigger: 'change' 
+	}],
+	value3: [{ 
+		required: true, 
+		message: '请填写活动形式', 
+		trigger: 'blur' 
+	}]
 })
 
 

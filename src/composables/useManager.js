@@ -1,5 +1,5 @@
 import { changePassword } from "~/api/manager";
-import { ref, computed, reactive, onMounted, onBeforeUnmount } from 'vue'
+import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { popOut, toast } from "~/composables/util"
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
@@ -11,7 +11,6 @@ export function useLogin() {
 
 	const store = useStore()
 	const router = useRouter()
-	const loading = ref(false)
 
 	const { t } = useI18n()
 
@@ -57,18 +56,15 @@ export function useLogin() {
 				console.log('context of the form: ', form)
 				console.log(formRef.value)
 			}
-			loading.value = true
 			store.dispatch('login', form).then((res) => {
 
 				console.log("login success: ", res.token)
 				router.push('/')
 			})
-				.catch((error) => {
-					console.log("login failed: ", error)
-				})
-				.finally(() => {
-					loading.value = false
-				})
+			.catch((error) => {
+				console.log("login failed: ", error)
+			})
+			
 
 		} catch (error) {
 			console.log(error)
@@ -95,8 +91,7 @@ export function useLogin() {
 		form,
 		rules,
 		formRef,
-		onSubmit,
-		loading
+		onSubmit
 	}
 
 }

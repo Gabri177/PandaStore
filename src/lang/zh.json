@@ -67,6 +67,12 @@
 			"success_message": "密码修改成功",
 			"error_title": "错误",
 			"error_message": "密码修改失败"
+		},
+		"register": {
+			"success_title": "成功",
+			"success_message": "注册成功",
+			"error_title": "错误",
+			"error_message": "注册失败"
 		}
 	},
 	"drawer": {
@@ -80,6 +86,19 @@
 			"confirm_passwordError_empty": "确认密码不能为空",
 			"old_password_label": "旧密码",
 			"new_password_label": "新密码",
+			"confirm_password_label": "确认密码"
+		},
+		"register": {
+			"title": "注册",
+			"username_placeholder": "请输入用户名",
+			"password_placeholder": "请输入密码",
+			"confirm_password_placeholder": "确认密码",
+			"usernameError_empty": "用户名不能为空",
+			"passwordError_empty": "密码不能为空",
+			"passwordError_length": "密码长度不能小于4位",
+			"confirm_passwordError_empty": "确认密码不能为空",
+			"username_label": "用户名",
+			"password_label": "密码",
 			"confirm_password_label": "确认密码"
 		}
 	},

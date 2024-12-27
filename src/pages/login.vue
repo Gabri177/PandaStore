@@ -62,7 +62,7 @@
 
 	<FormDrawer 
 	ref="formDrawer" 
-	:formTitle="t('drawer.change_password.title')"
+	:formTitle="t('drawer.register.title')"
 	:withHeader="true"
 	:confirmText="t('button.confirm')"
 	:cancelText="t('button.cancel')"
@@ -72,42 +72,41 @@
 		<el-form 
 			:model="reg_form" 
 			:rules="reg_rules" 
-			ref="formRef" 
+			ref="reg_formRef" 
 			label-width="80px"
 			>
 			<el-form-item 
-			prop="oldPassword"
-			:label="$t('drawer.change_password.old_password_label')"
+			prop="username"
+			:label="$t('drawer.register.username_label')"
 			label-position="top"
 			>
 				<el-input
-				v-model="form.value1"
-				type="password"
-				show-password
-				:placeholder="$t('drawer.change_password.old_password_placeholder')"></el-input>
+				v-model="reg_form.username"
+				type="default"
+				:placeholder="$t('drawer.register.username_placeholder')"></el-input>
 			</el-form-item>
 
 			<el-form-item 
-			prop="newPassword"
-			:label="$t('drawer.change_password.new_password_label')"	
+			prop="password"
+			:label="$t('drawer.register.password_label')"	
 			label-position="top"
 			>
 				<el-input
-				v-model="form.value2"
+				v-model="reg_form.password"
 				type="password"
 				show-password
-				:placeholder="$t('drawer.change_password.new_password_placeholder')"></el-input>
+				:placeholder="$t('drawer.register.password_placeholder')"></el-input>
 			</el-form-item>
 
 			<el-form-item 
 			prop="confirmPassword"
-			:label="$t('drawer.change_password.confirm_password_label')"
+			:label="$t('drawer.register.confirm_password_label')"
 			label-position="top"
 			>
 				<el-input 
-				v-model="form.value3" 
+				v-model="reg_form.confirmPassword" 
 				type="password"
-				:placeholder="$t('drawer.change_password.confirm_password_placeholder')" 
+				:placeholder="$t('drawer.register.confirm_password_placeholder')" 
 				show-password></el-input>
 			</el-form-item>
 
@@ -122,6 +121,8 @@
 import FormDrawer from '~/components/FormDrawer.vue';
 import { useLogin } from '~/composables/useManager.js'
 import { lang } from '~/lang'
+import { registerAccount } from '~/api/manager.js'
+import { popOut, toast } from "~/composables/util"
 
 const t = lang.global.t
 
@@ -130,44 +131,73 @@ const {
 		rules,
 		formRef,
 		onSubmit,
-		loading
 	} = useLogin();
 
 
 import { ref, reactive } from 'vue'
 
 const formDrawer = ref(null)
-
-const onConfirm = () => {
-	
-	// logic of confirm 
-}
+const reg_formRef = ref(null)
 
 const handleRegister = () => formDrawer.value.open()
 
 const reg_form = reactive({
-	value1: '',
-	value2: '',
-	value3: ''
+	
+	username: '',
+	password: '',
+	confirmPassword: ''
 })
 
 const reg_rules = reactive({
-	value1: [{ 
+	username: [{ 
 			required: true, 
-			message: '请输入活动名称', 
+			message: () => t('drawer.register.usernameError_empty'), 
 			trigger: 'blur' 
 	}],
-	value2: [{ 
+	password: [{ 
 		required: true, 
-		message: '请选择活动区域', 
-		trigger: 'change' 
+		message: () => t('drawer.register.passwordError_empty'), 
+		trigger: 'blur' 
 	}],
-	value3: [{ 
+	confirmPassword: [{ 
 		required: true, 
-		message: '请填写活动形式', 
+		message: () => t('drawer.register.confirm_passwordError_empty'), 
 		trigger: 'blur' 
 	}]
 })
+
+const onConfirm = async () => {
+
+	try {
+		const valid = await reg_formRef.value.validate();
+		if (valid) {
+
+			console.log('submit')
+			console.log('context of the form: ', reg_form)
+			console.log(reg_formRef.value)
+		}
+		formDrawer.value.showLoading()
+
+		registerAccount(form)
+			.then(res => {
+				toast(t("toast.register.success_title"), t("toast.register.success_message"))
+			})
+			.catch(error => {
+				toast(t("toast.register.error_title"), t("toast.register.error_message"), "error")
+			})
+			.finally(() => {
+				formDrawer.value.hideLoading()
+				setTimeout(() => {
+					formDrawer.value.close()
+				}, 1000);
+			})
+
+
+	} catch (error) {
+		console.log(error)
+	}
+}
+
 
 
 </script>

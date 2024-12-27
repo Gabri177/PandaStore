@@ -69,6 +69,12 @@
 			"success_message": "Password change successful",
 			"error_title": "Error",
 			"error_message": "Password change failed"
+		},
+		"register": {
+			"success_title": "Success",
+			"success_message": "Registration successful",
+			"error_title": "Error",
+			"error_message": "Registration failed"
 		}
 	},
 	"drawer": {
@@ -82,6 +88,19 @@
 			"confirm_passwordError_empty": "Confirm Password cannot be empty",
 			"old_password_label": "Old Password",
 			"new_password_label": "New Password",
+			"confirm_password_label": "Confirm Password"
+		},
+		"register": {
+			"title": "Register",
+			"username_placeholder": "Enter username",
+			"password_placeholder": "Enter password",
+			"confirm_password_placeholder": "Confirm password",
+			"usernameError_empty": "Username cannot be empty",
+			"passwordError_empty": "Password cannot be empty",
+			"passwordError_length": "Password cannot be less than 4 characters",
+			"confirm_passwordError_empty": "Confirm password cannot be empty",
+			"username_label": "Username",
+			"password_label": "Password",
 			"confirm_password_label": "Confirm Password"
 		}
 	},

@@ -1,12 +1,6 @@
 <template>
 	<el-row class="login-container">
-		<el-col :lg="16" :md="10" class="left">
-			<div>
-				<div>{{ $t('login.left_title') }}</div>
-				<div>{{ $t('login.left_title_msg') }}</div>
-			</div>
-		</el-col>
-		<el-col :lg="8" :md="14" class="right">
+		<el-col :lg="8" :md="14" class="left">
 			<h2 class="title">{{ $t('login.right_title') }}</h2>
 			<div>
 				<span class="line"></span>
@@ -55,9 +49,25 @@
 				<el-form-item>
 					<el-button class="w-[250px] text-light-200" type="primary" @click="onSubmit" round color="rgb(42,77,208)" :loading="loading">{{ $t('login.button_text') }}</el-button>
 				</el-form-item>
+
+				<div 
+				class="bg-red-500 w-full"
+				style="height: 3000px;"
+				>
+					123
+				</div>
 			</el-form>
 
+			
+
 		</el-col>
+		<el-col :lg="16" :md="10" class="right">
+			<div>
+				<div>{{ $t('login.left_title') }}</div>
+				<div>{{ $t('login.left_title_msg') }}</div>
+			</div>
+		</el-col>
+		
 	</el-row>
 </template>
 
@@ -159,31 +169,32 @@ onBeforeUnmount(() => {
 	@apply bg-blue-700 min-h-screen;
 }
 
-.login-container .left, .login-container .right {
+.login-container .right, .login-container .left {
 	@apply flex justify-center items-center;
 }
 
-.login-container .right {
-	@apply bg-light-50 flex-col;
+.login-container .left {
+
+	@apply bg-light-50 flex-col overflow-auto;
 }
 
-.login-container .left > div > div:first-child {
+.login-container .right > div > div:first-child {
 	@apply font-bold text-5xl text-light-50 mb-4;
 }
 
-.login-container .left > div > div:last-child {
+.login-container .right > div > div:last-child {
 	@apply text-xl text-gray-200;
 }
 
-.login-container .right .title {
+.login-container .left .title {
 	@apply font-bold text-4xl text-gray-800;
 }
 
-.login-container .right > div {
+.login-container .left > div {
 	@apply flex items-center justify-center my-5 text-gray-300 space-x-2;
 }
 
-.login-container .right .line {
+.login-container .left .line {
 	@apply h-[1px] w-16 bg-gray-200;
 }
 </style>

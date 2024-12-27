@@ -34,7 +34,9 @@
 		"loginStatus_success": "Login successful",
 		"loginStatus_failed": "username or password incorrect",
 		"loginAlert_title_success": "Success Notice",
-		"loginAlert_title_failed": "Error Notice"
+		"loginAlert_title_failed": "Error Notice",
+		"no_account": "No account yet?",
+		"register": "Register"
 	},
 	"router_toast": {
 		"not_login_msg": "Please login first",
@@ -86,6 +88,25 @@
 	"button":{
 		"confirm": "Confirm",
 		"cancel": "Cancel"
+	},
+	"register": {
+		"page_title": "Register",
+		"left_title": "Welcome",
+		"left_title_msg": "Welcome to the register page xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+		"button_text": "Register",
+		"username_placeholder": "Username",
+		"password_placeholder": "Password",
+		"right_title": "Welcome back",
+		"right_title_msg": "register with username and password",
+		"usernameError_empty": "Username cannot be empty",
+		"passwordError_empty": "Password cannot be empty",
+		"passwordError_length": "Password cannot be less than 4 characters",
+		"registerStatus_success": "Register successful",
+		"registerStatus_failed": "username or password incorrect",
+		"registerAlert_title_success": "Success Notice",
+		"registerAlert_title_failed": "Error Notice",
+		"already_account": "Already have an account?",
+		"login": "Login"
 	}
 }
   

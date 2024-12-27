@@ -32,7 +32,9 @@
 		"loginStatus_success": "登录成功",
 		"loginStatus_failed": "用户名或密码错误",
 		"loginAlert_title_success": "成功",
-		"loginAlert_title_failed": "错误"
+		"loginAlert_title_failed": "错误",
+		"no_account": "没有账号?",
+		"register": "注册一个"
 	},
 	"router_toast": {
 		"not_login_msg": "请先登录",
@@ -84,6 +86,25 @@
 	"button":{
 		"confirm": "确认",
 		"cancel": "取消"
+	},
+	"register": {
+		"page_title": "注册",
+		"left_title": "欢迎",
+		"left_title_msg": "欢迎来到注册页面 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+		"button_text": "注册",
+		"username_placeholder": "用户名",
+		"password_placeholder": "密码",
+		"right_title": "欢迎回来",
+		"right_title_msg": "使用用户名和密码注册",
+		"usernameError_empty": "用户名不能为空",
+		"passwordError_empty": "密码不能为空",
+		"passwordError_length": "密码长度不能小于4位",
+		"registerStatus_success": "注册成功",
+		"registerStatus_failed": "用户名或密码错误",
+		"registerAlert_title_success": "成功通知",
+		"registerAlert_title_failed": "错误通知",
+		"already_account": "已有账号?",
+		"login": "登录"
 	}
 }
   

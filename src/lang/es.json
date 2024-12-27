@@ -32,7 +32,9 @@
 		"loginStatus_success": "Inicio de sesión exitoso",
 		"loginStatus_failed": "usuario o contraseña incorrectos",
 		"loginAlert_title_success": "Aviso de éxito",
-		"loginAlert_title_failed": "Aviso de error"
+		"loginAlert_title_failed": "Aviso de error",
+		"no_account": "¿No tienes cuenta?",
+		"register": "Registrarse"
 	},
 	"router_toast": {
 		"not_login_msg": "Por favor inicie sesión primero",
@@ -84,5 +86,24 @@
 	"button": {
 		"confirm": "Confirmar",
 		"cancel": "Cancelar"
+	},
+	"register": {
+		"page_title": "Registrarse",
+		"left_title": "Bienvenido",
+		"left_title_msg": "Bienvenido a la página de registro",
+		"button_text": "Registrarse",
+		"username_placeholder": "Nombre de usuario",
+		"password_placeholder": "Contraseña",
+		"right_title": "Bienvenido de nuevo",
+		"right_title_msg": "registrarse con nombre de usuario y contraseña",
+		"usernameError_empty": "El nombre de usuario no puede estar vacío",
+		"passwordError_empty": "La contraseña no puede estar vacía",
+		"passwordError_length": "La contraseña no puede tener menos de 4 caracteres",
+		"registerStatus_success": "Registro exitoso",
+		"registerStatus_failed": "nombre de usuario o contraseña incorrectos",
+		"registerAlert_title_success": "Aviso de éxito",
+		"registerAlert_title_failed": "Aviso de error",
+		"already_account": "¿Ya tienes una cuenta?",
+		"login": "Iniciar sesión"
 	}
 }

@@ -18,7 +18,7 @@ router.beforeEach(async (to, from, next) => {
 	console.log('token: ', token)
 
 	//如果没有token并且不是登录页面
-	if (!token && to.path != '/login') {
+	if (!token && to.path != '/login' && to.path != '/register') {
 
 		toast(t('router_toast.not_login_title'), t('router_toast.not_login_msg'), 'error')
 		return next({path: '/login'})

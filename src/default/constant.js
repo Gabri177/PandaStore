@@ -440,3 +440,135 @@ export const defaultAsideMenu =  [
 		]
 	}
 ]
+
+const defaultGetInfoData =  {
+	"id": 3,
+	"username": "admin",
+	"avatar": "https://avatars.githubusercontent.com/u/152025617?s=400&u=d694da60281ffe578e22a75c9f6415ac607f3542&v=4",
+	"super": 1,
+	"role": {
+		"id": 2,
+		"name": "超级管理员"
+	},
+	"menus": defaultAsideMenu,
+	"ruleNames": [
+		"createRule,POST",
+		"updateRule,POST",
+		"deleteRule,POST",
+		"getRuleList,GET",
+		"updateRuleStatus,POST",
+		"createRole,POST",
+		"updateRole,POST",
+		"deleteRole,POST",
+		"getRoleList,GET",
+		"updateRoleStatus,POST",
+		"getGoodsList,GET",
+		"getCurrentImageList,GET",
+		"getImageClassList,GET",
+		"createImageClass,POST",
+		"updateImageClass,POST",
+		"deleteImageClass,POST",
+		"uploadImage,POST",
+		"deleteImage,POST",
+		"updateImage,POST",
+		"getCategoryList,GET",
+		"createCategory,POST",
+		"sortCategory,POST",
+		"updateCategory,POST",
+		"updateCategoryStatus,POST",
+		"deleteCategory,DELETE",
+		"getSkusList,GET",
+		"createSkus,POST",
+		"deleteSkus,POST",
+		"updateSkus,POST",
+		"updateSkusStatus,POST",
+		"getOrderList,GET",
+		"deleteOrder,POST",
+		"shipOrder,POST",
+		"refundOrder,POST",
+		"exportOrder,POST",
+		"getCommentList,GET",
+		"reviewComment,POST",
+		"updateCommentStatus,POST",
+		"getUserList,GET",
+		"createUser,POST",
+		"updateUser,POST",
+		"updateUserStatus,POST",
+		"deleteUser,POST",
+		"getUserLevelList,GET",
+		"createUserLevel,POST",
+		"updateUserLevel,POST",
+		"updateUserLevelStatus,POST",
+		"deleteUserLevel,POST",
+		"deleteManager,POST",
+		"getManagerList,GET",
+		"createManager,POST",
+		"updateManager,POST",
+		"updateManagerStatus,POST",
+		"getSysSetting,GET",
+		"sysconfigUpload,POST",
+		"setSysSetting,POST",
+		"getSysSetting,GET",
+		"setSysSetting,GET",
+		"readGoods,GET",
+		"updateGoodsSkus,POST",
+		"setGoodsBanner,POST",
+		"restoreGoods,POST",
+		"destroyGoods,POST",
+		"deleteGoods,POST",
+		"updateGoodsStatus,POST",
+		"createGoods,POST",
+		"updateGoods,POST",
+		"checkGoods,POST",
+		"createGoodsSkusCard,POST",
+		"sortGoodsSkusCard,POST",
+		"updateGoodsSkusCard,POST",
+		"deleteGoodsSkusCard,POST",
+		"createGoodsSkusCardValue,POST",
+		"updateGoodsSkusCardValue,POST",
+		"deleteGoodsSkusCardValue,POST",
+		"getNoticeList,GET",
+		"createNotice,POST",
+		"updateNotice,POST",
+		"deleteNotice,POST",
+		"getCouponList,GET",
+		"createCoupon,POST",
+		"updateCoupon,POST",
+		"updateCouponStatus,POST",
+		"getCategoryGoods,GET",
+		"connectCategoryGoods,POST",
+		"deleteCategoryGoods,POST",
+		"getStatistics1,GET",
+		"getStatistics2,GET",
+		"getStatistics3,GET",
+		"setRoleRules,POST",
+		"deleteCoupon,POST",
+		"getShipInfo,GET",
+		"getExpressCompanyList,GET",
+		"getAgentStatistics,GET",
+		"getAgentList,GET",
+		"getUserBillList,GET",
+		"getDistributionSetting,GET",
+		"setDistributionSetting,POST"
+	]
+}
+
+
+export const test = {
+	"trigger": true,
+	"login": {
+		"success": Promise.resolve({
+			
+			"token": "xxxxxxxxxxxxx"
+			
+		})
+	},
+	"logout": {
+		"success": Promise.resolve({
+			"data": "退出登录成功"
+		})
+	},
+	"getinfo": {
+		"success": Promise.resolve(defaultGetInfoData)
+	},
+}

@@ -17,9 +17,10 @@ export function logout() {
 	return axios.post('/Admin/Logout')
 }
 //获取用户信息
+// 接口名称要修改 方法要改成get
 export function getInfo() {
 
-	return axios.get('/Admin/TokenTest')
+	return axios.post('/admin/getinfo')
 }
 //更改密码
 export function changePassword(data) {

@@ -1,12 +1,12 @@
 <template>
 	<div class="f-menu">
 		<el-menu 
-		default-active="2" 
 		class="border-0"
 		@select="handleSelect"
 		:style=" { width: $store.state.asideWidth } "
 		:collapse="isCollapse"
 		:collapse-transition="false"
+		:default-active="defaultActive"
 		unique-opened
 		>
 			<template 
@@ -60,44 +60,56 @@
 	overflow-x: hidden;
 	@apply shadow-md fixed bg-light-50;
 }
+
+.f-menu::-webkit-scrollbar {
+	width: 0;
+
+}
 </style>
 
 <script setup>
 
-	import { useRouter } from 'vue-router'
-	import { computed } from 'vue'
+	import { useRouter, useRoute } from 'vue-router'
+	import { computed, ref } from 'vue'
 	import { useStore } from 'vuex'
 
 	const router = useRouter()
 	const store = useStore()
+	const route = useRoute()
+
+	//默认选中
+	const defaultActive = ref(route.path)
 	
 
 	//是否折叠菜单
 	const isCollapse = computed(() => !(store.state.asideWidth == '250px'))
 
-	const asideMenu = [
-		{
-		"name": "主控台1",
-		"icon": "home-filled",
-		"child": [{
-			"name": "后台首页",
-			"icon": "help",
-			"frontpath": "/"
-		}]
-		},{
-		"name": "主控台2",
-		"icon": "home-filled",
-		"child": [{
-			"name": "商品管理",
-			"icon": "help",
-			"frontpath": "/goods/list"
-		}]
-		},{
-		"name": "主控台3",
-		"icon": "home-filled"
-		}
+	//侧边栏菜单
+	const asideMenu = computed(() => store.state.menus)
+
+	//const asideMenu = [
+	// 	{
+	// 	"name": "主控台1",
+	// 	"icon": "home-filled",
+	// 	"child": [{
+	// 		"name": "后台首页",
+	// 		"icon": "help",
+	// 		"frontpath": "/"
+	// 	}]
+	// 	},{
+	// 	"name": "主控台2",
+	// 	"icon": "home-filled",
+	// 	"child": [{
+	// 		"name": "商品管理",
+	// 		"icon": "help",
+	// 		"frontpath": "/goods/list"
+	// 	}]
+	// 	},{
+	// 	"name": "主控台3",
+	// 	"icon": "home-filled"
+	// 	}
 		
-	]
+	// ]
 
 	const handleSelect = (path) => {
 		router.push(path)

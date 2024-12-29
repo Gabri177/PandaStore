@@ -1,6 +1,7 @@
 import { useCookies } from "@vueuse/integrations/useCookies.mjs"
 
-const token_key = "adminkey"
+// const token_key = "adminkey"
+const token_key = "token"
 
 const cookie = useCookies()
 

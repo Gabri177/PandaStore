@@ -19,13 +19,15 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-
       '/api': {
-            target: ' https://www.leecode.fun/',  // 这里后面应该填写自己服务器后端的地址
-            changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api/, ''),
-          }
-    }
+        target: 'http://ceshi13.dishait.cn/', // 目标服务器地址
+        changeOrigin: true, // 修改请求头的来源
+        rewrite: (path) => {
+          console.log('代理重写路径:', path); // 打印被代理的路径
+          return path.replace(/^\/api/, '');
+        },
+      },
+    },
   },
   base: '/PandaStore/'
 })

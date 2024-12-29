@@ -13,8 +13,10 @@ const store = createStore({
 	  return {
 		// 用户信息
 		user: {},
-		//侧边狂赌
+		// 侧边宽度
 		asideWidth: "250px",
+		menus:[],
+		ruleNames:[]
 	  }
 	},
 	mutations: {
@@ -27,6 +29,12 @@ const store = createStore({
 		// 展开或者收缩侧边栏
 		handleAsideWidth(state) {
 			state.asideWidth = state.asideWidth == "250px" ? "64px" : "250px"
+		},
+		SET_MENUS(state, menus) {
+			state.menus = menus
+		},
+		SET_RULE_NAMES(state, ruleNames) {
+			state.ruleNames = ruleNames
 		}
 	},
 	actions: {
@@ -35,6 +43,12 @@ const store = createStore({
 			return new Promise((resolve, reject) => {
 				getInfo().then(res => {
 					commit('SET_USER_INFO', res)
+
+					//获取用户信息成功后，获取用户的菜单 权限
+					commit('SET_MENUS', res.menus)
+					commit('SET_RULE_NAMES', res.ruleNames)
+
+					
 					resolve(res)
 				}).catch(error => {
 					reject(error)

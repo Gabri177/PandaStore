@@ -1,9 +1,8 @@
-import router from "~/router"
+import { router, addRoutes } from "~/router"
 import { getToken } from "~/composables/auth"
 import { toast, showFullScreenLoading, hideFullScreenLoading } from "~/composables/util"
 import { lang } from "~/lang"
 import store from "~/store"
-
 
 
 
@@ -30,15 +29,25 @@ router.beforeEach(async (to, from, next) => {
 		return next({path: from.path ? from.path : '/'})
 	}
 
+	let hasNewRoute = false
 	if (token) {
 		//获取用户信息
-		await store.dispatch('getinfo')
+		let { menus } = await store.dispatch('getinfo')
+
+		////////////////////////////////////
+		// 动态添加路由
+		hasNewRoute = addRoutes(menus)
+		////////////////////////////////////
 	}
 
 	// 设置页面标题
-	let title = to.meta.title() ? to.meta.title() : 'PandaStore'
+	let title = 'PandaStore'
+	if (typeof to.meta.title === 'function') {
+		title = to.meta.title()
+	}
 	document.title = title
-	next()
+
+	hasNewRoute ? next(to.fullPath) : next()
 })
 
 router.afterEach((to, from) => {

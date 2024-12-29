@@ -104,136 +104,155 @@ const asyncRoutes = [
 		name: '/',
 		component: Index,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.index.page_title')
 		}
-	} , {
+	},
+	{
 		path: '/goods/list',
 		name: '/goods/list',
 		component: GoodList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.goods.list.page_title')
 		}
-	} , {
+	},
+	{
 		path: '/skus/list',
 		name: '/skus/list',
 		component: SkusList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.skus.list.page_title')
 		}
-	} , {
+	},
+	{
 		path: '/coupon/list',
 		name: '/coupon/list',
 		component: CouponList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.coupon.list.page_title')
 		}
-	} , {
+	},
+	{
 		path: '/category/list',
 		name: '/category/list',
 		component: CategoryList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.category.list.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/user/list',
 		name: '/user/list',
 		component: UserList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.user.list.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/level/list',
 		name: '/level/list',
 		component: LevelList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.level.list.page_title')
 		}
-	} , {
+	},
+	{
 		path: '/order/list',
 		name: '/order/list',
 		component: OrderList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.order.list.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/comment/list',
 		name: '/comment/list',
 		component: CommentList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.comment.list.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/access/list',
 		name: '/access/list',
 		component: AccessList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.access.list.page_title')
 		}
-	} , {
+	},
+	{
 		path: '/manager/list',
 		name: '/manager/list',
 		component: ManagerList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.manager.list.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/role/list',
 		name: '/role/list',
 		component: RoleList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.role.list.page_title')
 		}
-	} , {
+	},
+	{
 		path: '/setting/base',
 		name: '/setting/base',
 		component: SettingBase,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.setting.base.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/setting/buy',
 		name: '/setting/buy',
 		component: SettingBuy,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.setting.buy.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/setting/ship',
 		name: '/setting/ship',
 		component: SettingShip,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.setting.ship.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/distribution/index',
 		name: '/distribution/index',
 		component: DistributionIndex,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.distribution.index.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/distribution/setting',
 		name: '/distribution/setting',
 		component: DistributionSetting,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.distribution.setting.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/image/list',
 		name: '/image/list',
 		component: ImageList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.image.list.page_title')
 		}
-	}, {
+	},
+	{
 		path: '/notice/list',
 		name: '/notice/list',
 		component: NoticeList,
 		meta: {
-			title: () => t('index.page_title')
+			title: () => t('sideMenu.notice.list.page_title')
 		}
 	}
-]
+];
+
 
 export const router = createRouter({
 

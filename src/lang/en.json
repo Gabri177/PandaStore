@@ -107,6 +107,95 @@
 	"button":{
 		"confirm": "Confirm",
 		"cancel": "Cancel"
+	},
+	"sideMenu": {
+		"index": {
+		  "page_title": "Home"
+		},
+		"goods": {
+		  "list": {
+			"page_title": "Goods"
+		  }
+		},
+		"skus": {
+		  "list": {
+			"page_title": "SKUs"
+		  }
+		},
+		"coupon": {
+		  "list": {
+			"page_title": "Coupons"
+		  }
+		},
+		"category": {
+		  "list": {
+			"page_title": "Categories"
+		  }
+		},
+		"user": {
+		  "list": {
+			"page_title": "Users"
+		  }
+		},
+		"level": {
+		  "list": {
+			"page_title": "Levels"
+		  }
+		},
+		"order": {
+		  "list": {
+			"page_title": "Orders"
+		  }
+		},
+		"comment": {
+		  "list": {
+			"page_title": "Comments"
+		  }
+		},
+		"access": {
+		  "list": {
+			"page_title": "Access"
+		  }
+		},
+		"manager": {
+		  "list": {
+			"page_title": "Managers"
+		  }
+		},
+		"role": {
+		  "list": {
+			"page_title": "Roles"
+		  }
+		},
+		"setting": {
+		  "base": {
+			"page_title": "Settings"
+		  },
+		  "buy": {
+			"page_title": "Purchase"
+		  },
+		  "ship": {
+			"page_title": "Shipping"
+		  }
+		},
+		"distribution": {
+		  "index": {
+			"page_title": "Distribution"
+		  },
+		  "setting": {
+			"page_title": "Settings"
+		  }
+		},
+		"image": {
+		  "list": {
+			"page_title": "Images"
+		  }
+		},
+		"notice": {
+		  "list": {
+			"page_title": "Notices"
+		  }
+		}
 	}
 }
   

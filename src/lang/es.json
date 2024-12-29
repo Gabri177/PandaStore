@@ -105,5 +105,94 @@
 	"button": {
 		"confirm": "Confirmar",
 		"cancel": "Cancelar"
+	},
+	"sideMenu": {
+		"index": {
+		  "page_title": "Inicio"
+		},
+		"goods": {
+		  "list": {
+			"page_title": "Productos"
+		  }
+		},
+		"skus": {
+		  "list": {
+			"page_title": "SKU"
+		  }
+		},
+		"coupon": {
+		  "list": {
+			"page_title": "Cupones"
+		  }
+		},
+		"category": {
+		  "list": {
+			"page_title": "Categorías"
+		  }
+		},
+		"user": {
+		  "list": {
+			"page_title": "Usuarios"
+		  }
+		},
+		"level": {
+		  "list": {
+			"page_title": "Niveles"
+		  }
+		},
+		"order": {
+		  "list": {
+			"page_title": "Pedidos"
+		  }
+		},
+		"comment": {
+		  "list": {
+			"page_title": "Comentarios"
+		  }
+		},
+		"access": {
+		  "list": {
+			"page_title": "Accesos"
+		  }
+		},
+		"manager": {
+		  "list": {
+			"page_title": "Administradores"
+		  }
+		},
+		"role": {
+		  "list": {
+			"page_title": "Roles"
+		  }
+		},
+		"setting": {
+		  "base": {
+			"page_title": "Básico"
+		  },
+		  "buy": {
+			"page_title": "Compra"
+		  },
+		  "ship": {
+			"page_title": "Envío"
+		  }
+		},
+		"distribution": {
+		  "index": {
+			"page_title": "Distribución"
+		  },
+		  "setting": {
+			"page_title": "Ajustes"
+		  }
+		},
+		"image": {
+		  "list": {
+			"page_title": "Imágenes"
+		  }
+		},
+		"notice": {
+		  "list": {
+			"page_title": "Avisos"
+		  }
+		}
 	}
 }

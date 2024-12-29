@@ -105,6 +105,95 @@
 	"button":{
 		"confirm": "确认",
 		"cancel": "取消"
-	}
+	},
+	"sideMenu": {
+		"index": {
+		  "page_title": "首页"
+		},
+		"goods": {
+		  "list": {
+			"page_title": "商品管理"
+		  }
+		},
+		"skus": {
+		  "list": {
+			"page_title": "SKU管理"
+		  }
+		},
+		"coupon": {
+		  "list": {
+			"page_title": "优惠券管理"
+		  }
+		},
+		"category": {
+		  "list": {
+			"page_title": "分类管理"
+		  }
+		},
+		"user": {
+		  "list": {
+			"page_title": "用户管理"
+		  }
+		},
+		"level": {
+		  "list": {
+			"page_title": "会员等级"
+		  }
+		},
+		"order": {
+		  "list": {
+			"page_title": "订单管理"
+		  }
+		},
+		"comment": {
+		  "list": {
+			"page_title": "评论管理"
+		  }
+		},
+		"access": {
+		  "list": {
+			"page_title": "权限管理"
+		  }
+		},
+		"manager": {
+		  "list": {
+			"page_title": "管理员管理"
+		  }
+		},
+		"role": {
+		  "list": {
+			"page_title": "角色管理"
+		  }
+		},
+		"setting": {
+		  "base": {
+			"page_title": "基本设置"
+		  },
+		  "buy": {
+			"page_title": "购买设置"
+		  },
+		  "ship": {
+			"page_title": "配送设置"
+		  }
+		},
+		"distribution": {
+		  "index": {
+			"page_title": "分销概览"
+		  },
+		  "setting": {
+			"page_title": "分销设置"
+		  }
+		},
+		"image": {
+		  "list": {
+			"page_title": "图片管理"
+		  }
+		},
+		"notice": {
+		  "list": {
+			"page_title": "通知管理"
+		  }
+		}
+	}	  
 }
   

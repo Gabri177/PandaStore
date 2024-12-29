@@ -1,10 +1,8 @@
 <template>
 	<div>
-		商品管理
+		公告管理
 	</div>
 	<div>
-		商品管理
+		公告管理
 	</div>
-
-
 </template>

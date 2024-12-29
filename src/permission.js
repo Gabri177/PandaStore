@@ -4,6 +4,8 @@ import { toast, showFullScreenLoading, hideFullScreenLoading } from "~/composabl
 import { lang } from "~/lang"
 import store from "~/store"
 
+import { defaultAsideMenu } from "./default/constant"
+
 
 
 const { t } = lang.global;
@@ -36,7 +38,7 @@ router.beforeEach(async (to, from, next) => {
 
 		////////////////////////////////////
 		// 动态添加路由
-		hasNewRoute = addRoutes(menus)
+		hasNewRoute = addRoutes(defaultAsideMenu)
 		////////////////////////////////////
 	}
 

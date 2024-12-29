@@ -44,11 +44,13 @@ const store = createStore({
 				getInfo().then(res => {
 					commit('SET_USER_INFO', res)
 
+					//////////////////////////////////////////
 					//获取用户信息成功后，获取用户的菜单 权限
-					commit('SET_MENUS', res.menus)
-					commit('SET_RULE_NAMES', res.ruleNames)
+					// commit('SET_MENUS', res.menus)
+					// commit('SET_RULE_NAMES', res.ruleNames)
+					//////////////////////////////////////////
 
-					
+
 					resolve(res)
 				}).catch(error => {
 					reject(error)

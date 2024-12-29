@@ -72,6 +72,7 @@
 	import { useRouter, useRoute } from 'vue-router'
 	import { computed, ref } from 'vue'
 	import { useStore } from 'vuex'
+	import { defaultAsideMenu } from '~/default/constant.js'
 
 	const router = useRouter()
 	const store = useStore()
@@ -85,31 +86,9 @@
 	const isCollapse = computed(() => !(store.state.asideWidth == '250px'))
 
 	//侧边栏菜单
-	const asideMenu = computed(() => store.state.menus)
+	// const asideMenu = computed(() => store.state.menus)
 
-	//const asideMenu = [
-	// 	{
-	// 	"name": "主控台1",
-	// 	"icon": "home-filled",
-	// 	"child": [{
-	// 		"name": "后台首页",
-	// 		"icon": "help",
-	// 		"frontpath": "/"
-	// 	}]
-	// 	},{
-	// 	"name": "主控台2",
-	// 	"icon": "home-filled",
-	// 	"child": [{
-	// 		"name": "商品管理",
-	// 		"icon": "help",
-	// 		"frontpath": "/goods/list"
-	// 	}]
-	// 	},{
-	// 	"name": "主控台3",
-	// 	"icon": "home-filled"
-	// 	}
-		
-	// ]
+	const asideMenu =  defaultAsideMenu
 
 	const handleSelect = (path) => {
 		router.push(path)

@@ -1,10 +1,8 @@
 <template>
 	<div>
-		商品管理
+		分销首页
 	</div>
 	<div>
-		商品管理
+		分销首页
 	</div>
-
-
 </template>

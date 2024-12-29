@@ -4,7 +4,9 @@
 			<fHeader />
 		</el-header>
 		<el-container>
-			<el-aside>
+			<el-aside
+			:width="$store.state.asideWidth"
+			>
 				<fAside />
 			</el-aside>
 			<el-main>
@@ -22,3 +24,12 @@ import fAside from './components/fAside.vue';
 import fTagList from './components/fTagList.vue';
 
 </script>
+
+<style scoped>
+
+el-aside {
+	transition: all 0.3s;
+}
+
+
+</style>

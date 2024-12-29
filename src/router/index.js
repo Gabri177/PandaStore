@@ -8,6 +8,7 @@ import NotFound from "~/pages/404.vue"
 import Login from "~/pages/login.vue"
 import lang from "~/lang"
 import Admin from "~/layouts/admin.vue"
+import GoodList from "~/pages/goods/list.vue"
 
 const { t } = lang.global;
 const routes = [
@@ -15,14 +16,21 @@ const routes = [
 		path: '/',
 		component: Admin,
 		// 子路由
-		children: [{
-
-			path: '/',
-			component: Index,
-			meta: {
-				title: () => t('index.page_title')
+		children: [
+			{
+				path: '/',
+				component: Index,
+				meta: {
+					title: () => t('index.page_title')
+				}
+			} , {
+				path: '/goods/list',
+				component: GoodList,
+				meta: {
+					title: () => t('index.page_title')
+				}
 			}
-		}]
+		]
 	}, {
 
 		path: '/login',

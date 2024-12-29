@@ -6,8 +6,9 @@
 			</el-icon>
 			公司名称
 		</span>
-		<el-icon :size="25" class="icon-btn mr-3">
-			<Fold />
+		<el-icon :size="25" class="icon-btn mr-3" @click="$store.commit('handleAsideWidth')">
+			<Fold v-if="$store.state.asideWidth=='250px'"/>
+			<Expand v-else/>
 		</el-icon>
 		<el-icon :size="25" class="icon-btn" @click="handleRefresh">
 			<Refresh />

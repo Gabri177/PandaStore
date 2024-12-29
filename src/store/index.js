@@ -12,7 +12,9 @@ const store = createStore({
 	state () {
 	  return {
 		// 用户信息
-		user: {}
+		user: {},
+		//侧边狂赌
+		asideWidth: "250px",
 	  }
 	},
 	mutations: {
@@ -21,6 +23,10 @@ const store = createStore({
 		SET_USER_INFO (state, user) {
 		  state.user = user
 		  console.log('SET_USER_INFO called: ', user)
+		},
+		// 展开或者收缩侧边栏
+		handleAsideWidth(state) {
+			state.asideWidth = state.asideWidth == "250px" ? "64px" : "250px"
 		}
 	},
 	actions: {

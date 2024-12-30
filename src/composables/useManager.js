@@ -1,10 +1,12 @@
 import { changePassword } from "~/api/manager";
-import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
+import { ref, reactive, onMounted, onBeforeUnmount, computed, watch, isRef} from 'vue'
 import { popOut, toast } from "~/composables/util"
-import { useRouter } from "vue-router";
+import { useRoute, onBeforeRouteUpdate, useRouter } from 'vue-router'
+import { useCookies } from "@vueuse/integrations/useCookies.mjs"
 import { useStore } from "vuex";
 import { useI18n } from 'vue-i18n';
 import { logout } from "~/api/manager";
+import lang from "~/lang"
 
 
 export function useLogin() {
@@ -204,5 +206,127 @@ export function useLogout() {
 
 	return {
 		handleLogout
+	}
+}
+
+export function useTablist() {
+
+	const route = useRoute()
+	const router = useRouter()
+	const cookie = useCookies()
+	const language = lang.global
+	const { t } = lang.global;
+
+
+	const activeTab = ref(route.path)
+	const tabList = ref([
+	{
+		title: computed(() => t('sideMenu.index.page_title')) ,
+		path: '/',
+		title_key: 'sideMenu.index.page_title'
+		
+	}
+	])
+
+
+	//添加标签导航
+	function addTab(tab) {
+
+		activeTab.value = tab.path
+		let noTab = tabList.value.findIndex(item => item.path == tab.path) == -1
+		if (noTab) {
+			tabList.value.push(tab)
+		}
+		cookie.set('tabList', tabList.value)
+	}
+
+	//初始化标签导航
+	function initTab() {
+		let tabListCookie = cookie.get('tabList')
+		if (tabListCookie) {
+			tabList.value = tabListCookie
+			console.log('cookie tabList: ', tabList.value)
+		}
+	}
+
+	initTab()
+
+	const handleCommand = (command) => {
+		switch (command) {
+			case 'clearOther':
+				tabList.value = tabList.value.filter(tab => tab.path == '/' || tab.path == activeTab.value)
+				cookie.set('tabList', tabList.value)
+				break
+			case 'clearAll':
+				tabList.value = tabList.value.filter(tab => tab.path == '/')
+				cookie.set('tabList', tabList.value)
+				router.push('/')
+				break
+		}
+	}
+
+	onBeforeRouteUpdate((to, from) => {
+		
+		const p = String(to.meta.title)
+		console.log('title: ', p)
+		// 在dev环境中 是设置的单引号因此使用这个规则
+		let match = p.match(/'([^']+)'/)
+		if (!match)
+			// 在prod环境中 由于打包的时候会被转义成双引号因此使用这个规则
+			// 否则match为null
+			match = p.match(/"([^"]+)"/);
+		console.log('match: ', match)	
+		if (match) {
+			console.log('title path : ' , match[1]);
+			addTab({
+			title_key: match[1],
+			title: computed(() => to.meta.title()),
+			path: to.path
+			})
+		}
+			
+		
+	})
+
+	const removeTab = (targetPath) => {
+		let tabs = tabList.value
+		let t = activeTab.value
+		if (t == targetPath) {
+			tabs.forEach((tab, index) => {
+				if (tab.path == targetPath) {
+					let nextTab = tabs[index + 1] || tabs[index - 1]
+					if (nextTab) {
+						t = nextTab.path
+					}
+				}
+			})
+		}
+		handleTabChange(t)
+		tabList.value = tabList.value.filter(tab => tab.path !== targetPath)
+		cookie.set('tabList', tabList.value)
+	}
+
+	const handleTabChange = (tab) => {
+		activeTab.value = tab
+		router.push(tab)
+		console.log('tab change: ', tab)
+	}
+
+	watch(() => language.locale.value, () => {
+
+		console.log('locale change: ')
+		console.log('tabList: ', tabList.value)
+		tabList.value.forEach(tab => {
+			tab.title = computed(() => t(tab.title_key))
+		})
+		cookie.set('tabList', tabList.value)
+	})
+
+	return {
+		activeTab,
+		tabList,
+		handleCommand,
+		removeTab,
+		handleTabChange
 	}
 }

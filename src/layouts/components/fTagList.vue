@@ -198,6 +198,7 @@ watch(() => language.locale.value, () => {
 	tabList.value.forEach(tab => {
 		tab.title = computed(() => t(tab.title_key))
 	})
+	cookie.set('tabList', tabList.value)
 })
 
 </script>

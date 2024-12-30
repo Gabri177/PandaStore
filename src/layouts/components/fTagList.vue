@@ -151,13 +151,16 @@ onBeforeRouteUpdate((to, from) => {
 	
 	const p = String(to.meta.title)
 	const match = p.match(/'([^']+)'/)
-	if (match) 
+	if (match) {
 		console.log('title path : ' , match[1]);
-	addTab({
+		addTab({
 		title_key: match[1],
 		title: computed(() => to.meta.title()),
 		path: to.path
-	})
+		})
+	}
+		
+	
 })
 
 const removeTab = (targetPath) => {

@@ -151,7 +151,7 @@ onBeforeRouteUpdate((to, from) => {
 	
 	const p = String(to.meta.title)
 	console.log('title: ', p)
-	const match = p.match(/'([^']+)'/)
+	let match = p.match(/'([^']+)'/)
 	if (!match)
 		match = p.match(/"([^"]+)"/);
 	console.log('match: ', match)	

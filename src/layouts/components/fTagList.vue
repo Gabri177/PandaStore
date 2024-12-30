@@ -88,26 +88,28 @@
 </style>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, watch, isRef } from 'vue'
 import { useRoute, onBeforeRouteUpdate, useRouter } from 'vue-router'
 import { useCookies } from "@vueuse/integrations/useCookies.mjs"
+import lang from "~/lang"
 
 const route = useRoute()
 const router = useRouter()
 const cookie = useCookies()
+const language = lang.global
+const { t } = lang.global;
+
 
 const activeTab = ref(route.path)
 const tabList = ref([
   {
-    title: '后台首页',
-	path: '/'
+    title: computed(() => t('sideMenu.index.page_title')) ,
+	path: '/',
+	title_key: 'sideMenu.index.page_title'
     
-  },
-  {
-	title: '商城管理',
-	path: '/goods/list'
-  },
+  }
 ])
+
 
 //添加标签导航
 function addTab(tab) {
@@ -125,6 +127,7 @@ function initTab() {
 	let tabListCookie = cookie.get('tabList')
 	if (tabListCookie) {
 		tabList.value = tabListCookie
+		console.log('cookie tabList: ', tabList.value)
 	}
 }
 
@@ -145,12 +148,14 @@ const handleCommand = (command) => {
 }
 
 onBeforeRouteUpdate((to, from) => {
-	let title = ''
-	if (typeof to.meta.title == 'function') {
-		title = to.meta.title()
-	}
+	
+	const p = String(to.meta.title)
+	const match = p.match(/'([^']+)'/)
+	if (match) 
+		console.log('title path : ' , match[1]);
 	addTab({
-		title,
+		title_key: match[1],
+		title: computed(() => to.meta.title()),
 		path: to.path
 	})
 })
@@ -178,5 +183,14 @@ const handleTabChange = (tab) => {
 	router.push(tab)
 	console.log('tab change: ', tab)
 }
+
+watch(() => language.locale.value, () => {
+
+	console.log('locale change: ')
+	console.log('tabList: ', tabList.value)
+	tabList.value.forEach(tab => {
+		tab.title = computed(() => t(tab.title_key))
+	})
+})
 
 </script>

@@ -193,6 +193,34 @@
 		  "list": {
 			"page_title": "Avisos"
 		  }
+		},
+		"dropdown": {
+			"close_other": "Cerrar Otros",
+			"close_all": "Cerrar Todo"
 		}
-	}
+	},
+	"后台面板": "Panel",
+	"主控台": "Consola",
+	"商品管理": "Productos",
+	"分类管理": "Categorías",
+	"规格管理": "Especificaciones",
+	"优惠券管理": "Cupones",
+	"用户管理": "Usuarios",
+	"会员等级": "Niveles",
+	"订单管理": "Pedidos",
+	"评论管理": "Comentarios",
+	"管理员管理": "Administradores",
+	"权限管理": "Permisos",
+	"角色管理": "Roles",
+	"系统设置": "Sistema",
+	"基础设置": "Básico",
+	"交易设置": "Transacciones",
+	"物流设置": "Logística",
+	"分销模块": "Distribución",
+	"分销员管理": "Distribuidores",
+	"分销设置": "Ajustes",
+	"其他模块": "Otros",
+	"图库管理": "Galería",
+	"公告管理": "Anuncios",
+	"help": "Ayuda"
 }

@@ -30,8 +30,8 @@
 				</span>
 				<template #dropdown>
 					<el-dropdown-menu>
-						<el-dropdown-item command="clearOther">关闭其他</el-dropdown-item>
-						<el-dropdown-item command="clearAll">全部关闭</el-dropdown-item>
+						<el-dropdown-item command="clearOther">{{ $t('sideMenu.dropdown.close_other') }}</el-dropdown-item>
+						<el-dropdown-item command="clearAll">{{ $t('sideMenu.dropdown.close_all') }}</el-dropdown-item>
 					</el-dropdown-menu>
 				</template>
 			</el-dropdown>
@@ -151,8 +151,11 @@ onBeforeRouteUpdate((to, from) => {
 	
 	const p = String(to.meta.title)
 	console.log('title: ', p)
+	// 在dev环境中 是设置的单引号因此使用这个规则
 	let match = p.match(/'([^']+)'/)
 	if (!match)
+		// 在prod环境中 由于打包的时候会被转义成双引号因此使用这个规则
+		// 否则match为null
 		match = p.match(/"([^"]+)"/);
 	console.log('match: ', match)	
 	if (match) {

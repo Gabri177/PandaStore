@@ -21,7 +21,9 @@
 						<el-icon>
 							<component :is="item.icon" />
 						</el-icon>
-						<span>{{ item.name }}</span>
+						<span>
+							{{ $t(item.name) }}
+						</span>
 					</template>
 				
 					<el-menu-item v-for="(item2, index2) in item.child" 
@@ -31,7 +33,7 @@
 						<el-icon>
 							<component :is="item2.icon" />
 						</el-icon>
-						<span>{{ item2.name }}</span>
+						<span>{{ $t(item2.name) }}</span>
 						
 					</el-menu-item>
 				</el-sub-menu>

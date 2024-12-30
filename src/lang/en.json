@@ -195,7 +195,35 @@
 		  "list": {
 			"page_title": "Notices"
 		  }
+		},
+		"dropdown": {
+			"close_other": "Close Other",
+			"close_all": "Close All"
 		}
-	}
+	},
+	"后台面板": "Admin",
+	"主控台": "Dashboard",
+	"商品管理": "Products",
+	"分类管理": "Categories",
+	"规格管理": "Specs",
+	"优惠券管理": "Coupons",
+	"用户管理": "Users",
+	"会员等级": "Levels",
+	"订单管理": "Orders",
+	"评论管理": "Comments",
+	"管理员管理": "Admins",
+	"权限管理": "Permissions",
+	"角色管理": "Roles",
+	"系统设置": "Settings",
+	"基础设置": "Basic",
+	"交易设置": "Transactions",
+	"物流设置": "Shipping",
+	"分销模块": "Distribution",
+	"分销员管理": "Distributors",
+	"分销设置": "DistSettings",
+	"其他模块": "Others",
+	"图库管理": "Gallery",
+	"公告管理": "Announcements",
+	"help": "Help"
 }
   

@@ -69,7 +69,7 @@
 
 <script setup>
 
-	import { useRouter, useRoute } from 'vue-router'
+	import { useRouter, useRoute, onBeforeRouteUpdate } from 'vue-router'
 	import { computed, ref } from 'vue'
 	import { useStore } from 'vuex'
 	import { defaultAsideMenu } from '~/default/constant.js'
@@ -93,6 +93,12 @@
 	const handleSelect = (path) => {
 		router.push(path)
 	}
+
+	onBeforeRouteUpdate((to, from, next) => {
+		// console.log('sidebar path update',to.path)
+		defaultActive.value = to.path
+		next()
+	})
 
 
 </script>

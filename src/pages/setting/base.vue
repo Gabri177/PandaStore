@@ -2,7 +2,5 @@
 	<div>
 		基础设置
 	</div>
-	<div>
-		基础设置
-	</div>
+
 </template>

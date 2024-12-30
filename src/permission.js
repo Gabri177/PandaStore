@@ -11,6 +11,7 @@ import { defaultAsideMenu } from "./default/constant"
 const { t } = lang.global;
 
 
+let hasGetInfo = false
 //前置首位
 router.beforeEach(async (to, from, next) => {
 	
@@ -32,7 +33,8 @@ router.beforeEach(async (to, from, next) => {
 	}
 
 	let hasNewRoute = false
-	if (token) {
+	if (token && !hasGetInfo) {
+		hasGetInfo = true
 		//获取用户信息
 		let { menus } = await store.dispatch('getinfo')
 

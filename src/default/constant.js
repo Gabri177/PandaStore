@@ -441,6 +441,47 @@ export const defaultAsideMenu =  [
 	}
 ]
 
+const defalutStatistic1Data = {
+	"panels": [
+		{
+			"title": "支付订单",
+			"value": 11,
+			"unit": "年",
+			"unitColor": "success",
+			"subTitle": "总支付订单",
+			"subValue": 11,
+			"subUnit": ""
+		},
+		{
+			"title": "订单量",
+			"value": 666,
+			"unit": "周",
+			"unitColor": "danger",
+			"subTitle": "转化率",
+			"subValue": "60%",
+			"subUnit": ""
+		},
+		{
+			"title": "销售额",
+			"value": 3.33,
+			"unit": "年",
+			"unitColor": "",
+			"subTitle": "总销售额",
+			"subValue": 3.33,
+			"subUnit": ""
+		},
+		{
+			"title": "新增用户",
+			"value": 77,
+			"unit": "年",
+			"unitColor": "warning",
+			"subTitle": "总用户",
+			"subValue": 77,
+			"subUnit": "人"
+		}
+	]
+}
+
 const defaultGetInfoData =  {
 	"id": 3,
 	"username": "admin",
@@ -553,6 +594,144 @@ const defaultGetInfoData =  {
 	]
 }
 
+const defalutStatistic3DataWeek = {
+	"x": [
+		"07-24",
+		"07-23",
+		"07-22",
+		"07-21",
+		"07-20",
+		"07-19",
+		"07-18"
+	],
+	"y": [
+		51,
+		0,
+		1,
+		1,
+		0,
+		2,
+		1
+	]
+}
+
+const defalutStatistic3DataMonths = {
+	"x": [
+		"07-01",
+		"06-01",
+		"05-01",
+		"04-01",
+		"03-01",
+		"02-01",
+		"01-01"
+	],
+	"y": [
+		51,
+		0,
+		1,
+		1,
+		0,
+		2,
+		1
+	]
+}
+
+const defalutStatistic3DataHours = {
+	"x": [
+		"00",
+		"01",
+		"02",
+		"03",
+		"04",
+		"05",
+		"06",
+		"07",
+		"08",
+		"09",
+		"10",
+		"11",
+		"12",
+		"13",
+		"14",
+		"15",
+		"16",
+		"17",
+		"18",
+		"19",
+		"20",
+		"21",
+		"22",
+		"23"
+	],
+	"y": [
+		51,
+		0,
+		1,
+		1,
+		0,
+		2,
+		1,
+		51,
+		0,
+		1,
+		1,
+		0,
+		2,
+		1,
+		51,
+		0,
+		1,
+		1,
+		0,
+		2,
+		1,
+		51,
+		0,
+		1
+	]
+}
+
+const defalutStatistic2Data = {
+	"goods": [
+		{
+			"label": "审核中",
+			"value": 0
+		},
+		{
+			"label": "销售中",
+			"value": 119
+		},
+		{
+			"label": "已下架",
+			"value": 61
+		},
+		{
+			"label": "库存预警",
+			"value": 6
+		}
+	],
+	"order": [
+		{
+			"label": "待付款",
+			"value": 171
+		},
+		{
+			"label": "待发货",
+			"value": 16
+		},
+		{
+			"label": "已发货",
+			"value": 1
+		},
+		{
+			"label": "退款中",
+			"value": 17
+		}
+	]
+}
+
+
+
 
 export const test = {
 	"trigger": true,
@@ -571,4 +750,19 @@ export const test = {
 	"getinfo": {
 		"success": Promise.resolve(defaultGetInfoData)
 	},
+	"statistic1": {
+		"success": Promise.resolve(defalutStatistic1Data)
+	},
+	"statistic3Week": {
+		"success": Promise.resolve(defalutStatistic3DataWeek)
+	},
+	"statistic3Months": {
+		"success": Promise.resolve(defalutStatistic3DataMonths)
+	},
+	"statistic3Hours": {
+		"success": Promise.resolve(defalutStatistic3DataHours)
+	},
+	"statistic2": {
+		"success": Promise.resolve(defalutStatistic2Data)
+	}
 }

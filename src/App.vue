@@ -20,6 +20,9 @@ import changeLang from './components/langChanger.vue'
 
 <style>
 
+body {
+  @apply bg-gray-100;
+}
 /* .btn {
   @apply  bg-purple-400 text-gray-50 px-4 py-2 rounded-full transition-all 
   duration-500 hover:( bg-purple-800) focus:( ring-8 ring-purple-300);

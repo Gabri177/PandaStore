@@ -1,3 +1,5 @@
+
+// asideMenu
 export const defaultAsideMenu =  [
 	{
 		"id": 5,
@@ -440,7 +442,7 @@ export const defaultAsideMenu =  [
 		]
 	}
 ]
-
+// statistic1
 const defalutStatistic1Data = {
 	"panels": [
 		{
@@ -481,7 +483,7 @@ const defalutStatistic1Data = {
 		}
 	]
 }
-
+// getinfo
 const defaultGetInfoData =  {
 	"id": 3,
 	"username": "admin",
@@ -594,6 +596,7 @@ const defaultGetInfoData =  {
 	]
 }
 
+// statistic3
 const defalutStatistic3DataWeek = {
 	"x": [
 		"07-24",
@@ -691,6 +694,7 @@ const defalutStatistic3DataHours = {
 	]
 }
 
+// statistic2
 const defalutStatistic2Data = {
 	"goods": [
 		{
@@ -730,6 +734,150 @@ const defalutStatistic2Data = {
 	]
 }
 
+// image_class
+const defalutImageClassPage1 = {
+	"list": [
+		{
+			"id": 168,
+			"name": "化妆品",
+			"order": 1001,
+			"images_count": 25
+		},
+		{
+			"id": 133,
+			"name": "智能家电",
+			"order": 1001,
+			"images_count": 6
+		},
+		{
+			"id": 1574,
+			"name": "1111",
+			"order": 50,
+			"images_count": 0
+		},
+		{
+			"id": 1561,
+			"name": "22222",
+			"order": 50,
+			"images_count": 2
+		},
+		{
+			"id": 1519,
+			"name": "33333",
+			"order": 50,
+			"images_count": 1
+		},
+		{
+			"id": 1505,
+			"name": "44444",
+			"order": 50,
+			"images_count": 2
+		},
+		{
+			"id": 174,
+			"name": "123",
+			"order": 50,
+			"images_count": 2
+		},
+		{
+			"id": 173,
+			"name": "服装服饰",
+			"order": 50,
+			"images_count": 3
+		},
+		{
+			"id": 172,
+			"name": "毛巾",
+			"order": 50,
+			"images_count": 1
+		},
+		{
+			"id": 171,
+			"name": "其他品类",
+			"order": 50,
+			"images_count": 1
+		}
+	],
+	"totalCount": 21
+}
+
+const defalutImageClassPage2 = {
+	"list": [
+		{
+			"id": 170,
+			"name": "手表手机",
+			"order": 50,
+			"images_count": 0
+		},
+		{
+			"id": 169,
+			"name": "健身器材",
+			"order": 50,
+			"images_count": 2
+		},
+		{
+			"id": 1518,
+			"name": "美甲美睫",
+			"order": 18,
+			"images_count": 0
+		},
+		{
+			"id": 1514,
+			"name": "珠宝钻石",
+			"order": 9,
+			"images_count": 0
+		},
+		{
+			"id": 107,
+			"name": "运动旅行",
+			"order": 9,
+			"images_count": 5
+		},
+		{
+			"id": 1513,
+			"name": "美妆饰品",
+			"order": 8,
+			"images_count": 0
+		},
+		{
+			"id": 126,
+			"name": "居家生活",
+			"order": 8,
+			"images_count": 2
+		},
+		{
+			"id": 166,
+			"name": "个护清洁",
+			"order": 4,
+			"images_count": 1
+		},
+		{
+			"id": 1568,
+			"name": "11111111111",
+			"order": 1,
+			"images_count": 0
+		},
+		{
+			"id": 1544,
+			"name": "001",
+			"order": 1,
+			"images_count": 0
+		}
+	],
+	"totalCount": 21
+}
+
+const defalutImageClassPage3 = {
+	"list": [
+		{
+			"id": 128,
+			"name": "手机数码",
+			"order": 1,
+			"images_count": 1
+		}
+	],
+	"totalCount": 21
+}
 
 
 
@@ -764,5 +912,11 @@ export const test = {
 	},
 	"statistic2": {
 		"success": Promise.resolve(defalutStatistic2Data)
+	},
+	"imageClass1": {
+		"success": Promise.resolve(defalutImageClassPage1)
+	},
+	"imageClass2": {
+		"success": Promise.resolve(defalutImageClassPage2)
 	}
 }

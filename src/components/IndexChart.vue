@@ -57,6 +57,9 @@ var myChart = null;
 
 onMounted(() => {
 	var chartDom = document.getElementById('chart');
+	if (!chartDom) {
+		return
+	}
 	myChart = echarts.init(chartDom);
 	getData()
 	})

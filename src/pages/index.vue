@@ -2,6 +2,7 @@
 	<div>
 		<el-row 
 		:gutter="20"
+		v-permission="['getStatistics1,GET']"
 		>
 			<template v-if="panels.length == 0">
 				<el-col
@@ -73,7 +74,7 @@
 							{{ $t(item.subTitle) }}
 						</span>
 						<span>
-							{{ $t(item.subValue) }}
+							{{ item.subValue }}
 						</span>
 					</div>
 				</el-card>
@@ -86,9 +87,9 @@
 
 		<el-row :gutter="20" class="mt-5">
 			<el-col :span="12" :offset="0">
-				<indexChart />
+				<IndexChart v-permission="['getStatistics3,GET']" />
 			</el-col>
-			<el-col :span="12" :offset="0">
+			<el-col :span="12" :offset="0" v-permission="['getStatistics2,GET']">
 				<IndexCard class="mb-3" title="店铺信息" tip="店铺及商品信息" :btns="goods"/>
 				<IndexCard title="交易提示" tip="需要立即处理的订单" :btns="order"/>
 			</el-col>
@@ -101,7 +102,7 @@
 	import { ref } from 'vue'
 	import CountTo from '~/components/CountTo.vue'
 	import IndexNavs from '~/components/IndexNavs.vue'
-	import IndexChart from '../components/IndexChart.vue'
+	import IndexChart from '~/components/IndexChart.vue'
 	import IndexCard from '../components/IndexCard.vue'
 
 	const panels = ref([])

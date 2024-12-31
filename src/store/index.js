@@ -46,8 +46,8 @@ const store = createStore({
 
 					//////////////////////////////////////////
 					//获取用户信息成功后，获取用户的菜单 权限
-					// commit('SET_MENUS', res.menus)
-					// commit('SET_RULE_NAMES', res.ruleNames)
+					commit('SET_MENUS', res.menus)
+					commit('SET_RULE_NAMES', res.ruleNames)
 					//////////////////////////////////////////
 
 

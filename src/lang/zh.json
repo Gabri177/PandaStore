@@ -53,8 +53,8 @@
 		"logout":{
 			"title": "退出登录",
 			"message": "你确定要退出登录吗？",
-			"confirm": "是",
-			"cancel": "否"
+			"confirm": "确认",
+			"cancel": "取消"
 		}
 	},
 	"toast": {
@@ -103,6 +103,10 @@
 		}
 	},
 	"button":{
+		"confirm": "确认",
+		"cancel": "取消"
+	},
+	"dialog":{
 		"confirm": "确认",
 		"cancel": "取消"
 	},
@@ -197,6 +201,25 @@
 		"dropdown": {
 			"close_other": "关闭其他",
 			"close_all": "关闭所有"
+		}
+	},
+	"image": {
+		"header": {
+			"addImageClassButton": "新增图片分类"
+		},
+		"imageAside": {
+			"addImageClass": "新增图片分类",
+			"editImageClass": "编辑图片分类",
+			"categoryLabel": "分类名称",
+			"orderLabel": "排序",
+			"popOut":{
+				"delete": {
+					"title": "删除",
+					"message": "你确定要删除这个分类 =>",
+					"confirm": "确认",
+					"cancel": "取消"
+				}
+			}
 		}
 	},
 	"后台面板": "后台面板",

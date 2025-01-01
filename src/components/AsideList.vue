@@ -38,12 +38,16 @@ defineEmits(['edit', 'delete'])
 	@apply flex items-center p-3 text-sm text-gray-600 cursor-pointer;
 }
 
-.aside-list:hover {
-	@apply bg-gray-100;
+.aside-list:not(.active):hover {
+    @apply bg-blue-100;
+}
+
+.aside-list:not(.active):active {
+    @apply bg-blue-200;
 }
 
 .active {
-	@apply bg-blue-100;
+	@apply bg-blue-300;
 }
 
 </style>

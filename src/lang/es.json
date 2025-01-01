@@ -53,8 +53,8 @@
 		"logout":{
 			"title": "Cerrar sesión",
 			"message": "¿Estás seguro de que quieres cerrar sesión?",
-			"confirm": "Sí",
-			"cancel": "No"
+			"confirm": "Confirmar",
+			"cancel": "Cancelar"
 		}
 	},
 	"toast": {
@@ -103,6 +103,10 @@
 		}
 	},
 	"button": {
+		"confirm": "Confirmar",
+		"cancel": "Cancelar"
+	},
+	"dialog":{
 		"confirm": "Confirmar",
 		"cancel": "Cancelar"
 	},
@@ -197,6 +201,25 @@
 		"dropdown": {
 			"close_other": "Cerrar Otros",
 			"close_all": "Cerrar Todo"
+		}
+	},
+	"image": {
+		"header": {
+			"addImageClassButton": "Agregar categoría de imagen"
+		},
+		"imageAside": {
+			"addImageClass": "Agregar categoría de imagen",
+			"editImageClass": "Editar categoría de imagen",
+			"categoryLabel": "Nombre de la categoría",
+			"orderLabel": "Orden",
+			"popOut":{
+				"delete": {
+					"title": "Eliminar",
+					"message": "¿Estás seguro de que deseas eliminar esta categoría =>",
+					"confirm": "Confirmar",
+					"cancel": "Cancelar"
+				}
+			}
 		}
 	},
 	"后台面板": "Panel",

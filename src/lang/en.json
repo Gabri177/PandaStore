@@ -108,6 +108,10 @@
 		"confirm": "Confirm",
 		"cancel": "Cancel"
 	},
+	"dialog":{
+		"confirm": "Confirm",
+		"cancel": "Cancel"
+	},
 	"sideMenu": {
 		"index": {
 		  "page_title": "Home"
@@ -199,6 +203,25 @@
 		"dropdown": {
 			"close_other": "Close Other",
 			"close_all": "Close All"
+		}
+	},
+	"image": {
+		"header": {
+			"addImageClassButton": "Add Image Class"
+		},
+		"imageAside": {
+			"addImageClass": "Add Image Class",
+			"editImageClass": "Edit Image Class",
+			"categoryLabel": "Category Name",
+			"orderLabel": "Order",
+			"popOut":{
+				"delete": {
+					"title": "Delete",
+					"message": "Are you sure you want to delete this category =>",
+					"confirm": "Confirm",
+					"cancel": "Cancel"
+				}
+			}
 		}
 	},
 	"后台面板": "Admin",

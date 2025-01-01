@@ -150,9 +150,9 @@ const reg_form = reactive({
 
 const reg_rules = reactive({
 	username: [{ 
-			required: true, 
-			message: () => t('drawer.register.usernameError_empty'), 
-			trigger: 'blur' 
+		required: true, 
+		message: () => t('drawer.register.usernameError_empty'), 
+		trigger: 'blur' 
 	}],
 	password: [{ 
 		required: true, 

@@ -2,10 +2,11 @@
 	<el-container class="bg-white rounded" :style="{height: h + 'px'}">
       <el-header class="image-header">
         <el-button type="primary" @click="handleAddClass" size="small">{{ $t('image.header.addImageClassButton') }}</el-button>
+        <el-button type="warning" @click="handleUpload" size="small">{{ $t('image.header.addUploadButton') }}</el-button>
        
       </el-header>
       <el-container>
-		<ImageAside ref="asideRef" @changeClass="handleAsideChange"/>
+		<ImageAside ref="asideRef" @changeClass= "handleAsideChange"/>
 		<ImageMain ref="mainRef"/>
       </el-container>
     </el-container>
@@ -18,11 +19,16 @@ import ImageMain from '~/components/ImageMain.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const asideRef = ref(null)
+const mainRef = ref(null)
 const windowHeight = window.innerHeight || document.body.clientHeight
 // const h = windowHeight - 64 - 44 - 40
 
 const handleAddClass = () => {
 	asideRef.value.addImageClass()
+}
+
+const handleUpload = () => {
+	mainRef.value.openUploadDialog()
 }
 
 // 定义响应式高度
@@ -43,10 +49,10 @@ onBeforeUnmount(() => {
 	window.removeEventListener('resize', updateHeight);
 });
 
-const mainRef = ref(null)
 const handleAsideChange = (img_class_id) => {
 	mainRef.value.loadData(img_class_id)
 }
+
 
 
 </script>

@@ -20,8 +20,8 @@
 							{{ item.name }}
 						</div>
 						<div class="flex justify-center items-center p-2 ">
-							<el-button type="primary" size="small" text @click="handleEdit">edit</el-button>
-							<el-button type="primary" size="small" text @click="handleDelete">delete</el-button>
+							<el-button type="primary" size="small" text @click="handleEdit(item)">{{ $t('image.imageMain.edit') }}</el-button>
+							<el-button type="primary" size="small" text @click="handleDelete(item)">{{ $t('image.imageMain.delete') }}</el-button>
 						</div>
 					</el-card>
 				</el-col>
@@ -59,24 +59,54 @@
 				</el-form>
 			</div>
 		</DiaLog>
+
+		<DiaLog 
+		ref="uploadRef" 
+		:title="uploadTitle"
+		@cancel="handleUploadCancel"
+		@confirm="handleUploadConfirm"
+		>
+			<div>
+				<UploadFile :data="{ imageClassId }" @success="handleUploadSuccess" @error="handleUploadError"/>
+			</div>
+		</DiaLog>
 	</el-main>
 </template>
 
 <script setup>
 
 import { 
-	getImagesList 
+	getImagesList,
+	updateImage,
+	deleteImage
 } from '~/api/image.js'
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, openBlock } from 'vue';
 import { toast, popOut } from '~/composables/util'
 import { lang } from '~/lang'
 import DiaLog from '~/components/DiaLog.vue'
+import UploadFile from './UploadFile.vue';
 
 
 const { t } = lang.global
 
+// 上传弹窗
+const uploadRef = ref(null)
+const uploadTitle = computed(() => t('image.imageMain.upload.title'))
+
+const openUploadDialog = () => {
+	uploadRef.value.openDialog()
+}
+
+const handleUploadCancel = () => {
+	uploadRef.value.closeDialog()
+}
+
+
+
+
 // 弹窗部分
 const dialogRef = ref(null)
+const formRef = ref(null)
 const form = reactive({
 	rename: ''
 })
@@ -92,10 +122,12 @@ const rules = reactive({
 })
 
 //编辑的弹窗
-const dialogTitle = computed(() => t('image.imageAside.editImageClass'))
-const renameTitle = computed(() => t('image.imageAside.categoryLabel'))
+const dialogTitle = computed(() => t('image.imageAside.rename.title'))
+const renameTitle = computed(() => t('image.imageAside.rename.message'))
 
 //弹窗按钮事件处理
+
+let image_id=''
 const handleCancel = () => {
 
 	form.rename = ''
@@ -106,21 +138,47 @@ const handleConfirm = () => {
 	formRef.value.validate((valid) => {
 		if (valid) {
 			console.log('form', form)
+			dialogRef.value.showLoading()
+			updateImage(image_id, form.rename)
+			.then(res => {
+				console.log('updateImage:', res)
+				toast('success', '重命名成功')
+				getData(currentPage.value)
+				
+			})
+			.finally(()=>{
+				dialogRef.value.hideLoading()
+				handleCancel()
+			})
+
 		}
 	})
+
 }
 
 // 编辑 删除 按钮事件处理
-
-const handleEdit = () => {
+const handleEdit = (item) => {
 	dialogRef.value.openDialog()
+	form.rename = item.name
+	image_id = item.id
+	console.log('handleEdit image_id: ', image_id)
 }
 
-const handleDelete = () => {
+const handleDelete = (item) => {
 	
-	popOut('warngin', '是否删除该图片')
+	popOut(t('image.imageMain.popOut.title'), t('image.imageMain.popOut.message'))
 	.then(() => {
-		toast('success', '删除成功')
+		console.log ("handleDelete imageID: ", item.id)
+		deleteImage(item.id)
+		.then(res => {
+			console.log("图片删除成功", res)
+			getData()
+			toast ('success', '删除成功')
+		})
+		.finally(() => {
+			console.log('finally-deleteImage')
+		})
+	
 	})
 	.catch(() => {
 		console.log('cancel')
@@ -150,11 +208,14 @@ function getData(page = null, limit = 10) {
 		getImagesList(imageClassId.value, currentPage.value, limit)
 		.then(res => {
 
-			console.log('res image list', res)
+			console.log('getData => res image list', res)
 			list.value = res.list
 			totalPages.value = res.totalCount
 			// console.log('totalPages', totalPages.value)
 			
+		})
+		.catch((err)=>{
+			console.log('getData error: ', err)
 		})
 		.finally(() => {
 			loading.value = false
@@ -170,9 +231,24 @@ const loadData = (id) => {
 	getData()
 }
 
+// 上传事件处理
+const handleUploadSuccess = (res) => {
+	console.log('handleUploadSuccess', res)
+	getData()
+	uploadRef.value.closeDialog()
+}
+
+const handleUploadError = (error) => {
+	console.log('handleUploadError', error)
+	uploadRef.value.closeDialog()
+}
+
 defineExpose({
-	loadData
+	loadData,
+	openUploadDialog
 })
+
+
 
 </script>
 

@@ -207,7 +207,8 @@
 	},
 	"image": {
 		"header": {
-			"addImageClassButton": "Add Image Class"
+			"addImageClassButton": "Add Image Class",
+			"addUploadButton": "Upload Image"
 		},
 		"imageAside": {
 			"addImageClass": "Add Image Class",
@@ -221,6 +222,28 @@
 					"confirm": "Confirm",
 					"cancel": "Cancel"
 				}
+			},
+			"rename": {
+				"title": "Rename",
+				"message": "Please enter the new name for this category"
+			}
+		},
+		"imageMain":{
+			"edit": "Edit",
+			"delete": "Delete",
+			"popOut":{
+				"title": "Warning",
+				"message": "Are you sure you want to delete this image?"
+			},
+			"upload":{
+				"title": "Upload Image",
+				"text_1": "Drag image here or",
+				"text_2": "Click to upload",
+				"tip":"jpg/png files with a size less than 500kb",
+				"failedTitle": "Upload Failed",
+				"failedMessage": "Wrong in uploading image",
+				"successTitle": "Upload Success",
+				"successMessage": "Image uploaded successfully"
 			}
 		}
 	},

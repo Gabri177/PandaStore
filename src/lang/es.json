@@ -205,7 +205,8 @@
 	},
 	"image": {
 		"header": {
-			"addImageClassButton": "Agregar categoría de imagen"
+			"addImageClassButton": "Agregar categoría de imagen",
+			"addUploadButton": "Subir imagen"
 		},
 		"imageAside": {
 			"addImageClass": "Agregar categoría de imagen",
@@ -219,6 +220,28 @@
 					"confirm": "Confirmar",
 					"cancel": "Cancelar"
 				}
+			},
+			"rename": {
+				"title": "Renombrar",
+				"message": "Indica el nuevo nombre de la categoría"
+			}
+		},
+		"imageMain":{
+			"edit": "Editar",
+			"delete": "Eliminar",
+			"popOut":{
+				"title": "Aviso",
+				"message": "¿Estás seguro de que deseas eliminar esta imagen?"
+			},
+			"upload":{
+				"title": "Subir imagen",
+				"text_1": "Arrastra la imagen aquí o",
+				"text_2": "Haz clic para subir",
+				"tip":"archivos jpg/png con un tamaño inferior a 500kb",
+				"failedTitle": "Error",
+				"failedMessage": "Error al subir la imagen",
+				"successTitle": "Éxito",
+				"successMessage": "Imagen subida con éxito"
 			}
 		}
 	},

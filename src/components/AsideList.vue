@@ -1,12 +1,12 @@
 <template>
 	<div class="aside-list" :class="{'active': active}">
 		<span class="truncate"><slot /></span>
-		<el-button class="ml-auto" type="primary" size="small" @click="$emit('edit')" text>
+		<el-button class="ml-auto" type="primary" size="small" @click.stop="$emit('edit')" text>
 			<el-icon :size="12">
 				<Edit />
 			</el-icon>
 		</el-button>
-		<el-button type="primary" size="small" @click="$emit('delete')" text>
+		<el-button type="primary" size="small" @click.stop="$emit('delete')" text>
 			<el-icon :size="12">
 				<Close />
 			</el-icon>

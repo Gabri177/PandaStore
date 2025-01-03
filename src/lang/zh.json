@@ -205,7 +205,8 @@
 	},
 	"image": {
 		"header": {
-			"addImageClassButton": "新增图片分类"
+			"addImageClassButton": "新增图片分类",
+			"addUploadButton": "上传图片"
 		},
 		"imageAside": {
 			"addImageClass": "新增图片分类",
@@ -219,6 +220,28 @@
 					"confirm": "确认",
 					"cancel": "取消"
 				}
+			},
+			"rename": {
+				"title": "重命名",
+				"message": "请输入新的分类名称"
+			}
+		},
+		"imageMain":{
+			"edit": "编辑",
+			"delete": "删除",
+			"popOut":{
+				"title": "警告",
+				"message": "你确定要删除这个图片吗？"
+			},
+			"upload":{
+				"title": "上传图片",
+				"text_1": "拖动图片到这里或者",
+				"text_2": "点击上传",
+				"tip":"大小小于 500kb 的 jpg/png 文件",
+				"failedTitle": "错误",
+				"failedMessage": "上传失败",
+				"successTitle": "成功",
+				"successMessage": "上传成功"
 			}
 		}
 	},

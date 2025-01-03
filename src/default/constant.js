@@ -1182,6 +1182,48 @@ export const test = {
 			"totalCount": total
 		}
 		return Promise.resolve(newData)
+	},
+	"f_updateImage": function (id, name) {
+		
+		console.log("f_updateImage: ", id, name);
+
+		// 查找目标项
+		const target_item = defaultImagesAll.list.find(item => item.id === id);
+
+		if (!target_item) {
+			console.error(`Item with id ${id} not found.`);
+			return Promise.reject(new Error(`Item with id ${id} not found.`));
+		}
+
+		// 更新目标项的 name 属性
+		target_item.name = name;
+		console.log("Updated target item: ", target_item);
+
+		return Promise.resolve(target_item);
+	},
+	"f_deleteImage": function (id) {
+
+		console.log("f_deleteImage: ", id);
+
+		// 检查是否存在目标项
+		const itemExists = defaultImagesAll.list.some(item => item.id === id);
+
+		if (!itemExists) {
+			console.log('no exist target item');
+			return Promise.reject(new Error(`Item not found for id: ${id}`));
+		}
+
+		// 过滤掉目标项
+		const remove_target = defaultImagesAll.list.find(item => item.id === id);
+		defaultImagesAll.list = defaultImagesAll.list.filter(item => item.id !== id);
+
+		// 更新计数
+		defaultImagesAll.totalCount -= 1;
+
+		console.log('Updated list:', defaultImagesAll.list);
+		console.log('remove_target:', remove_target);
+
+		return Promise.resolve(remove_target);
 	}
 }
 

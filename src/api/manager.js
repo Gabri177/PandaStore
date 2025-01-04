@@ -18,7 +18,7 @@ export function login(data) {
 //退出
 export function logout() {
 
-	if (test.trigger == true) {
+	if (test.trigger != true) { // 这里设置为真的api 已经用不等于来接通真的api
 		return test.logout.success
 	}else {
 		return axios.post('/Admin/Logout')

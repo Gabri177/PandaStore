@@ -43,6 +43,7 @@ service.interceptors.response.use(function (response) {
   }, function (error) {
     // Cualquier código de estado que este fuera del rango de 2xx causa la ejecución de esta función
     // Haz algo con el error
+    console.log("axios.js 拦截器处理前的完整错误: ", error)
     return Promise.reject(error);
   });
 

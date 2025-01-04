@@ -112,7 +112,7 @@
 		getStatistics1()
 		.then(res => {
 			panels.value = res.panels
-			console.log('index data',panels.value)
+			// console.log('index data',panels.value)
 		})
 	}, 1000);
 
@@ -124,8 +124,8 @@
 		.then(res => {
 			goods.value = res.goods
 			order.value = res.order
-			console.log('goods', goods.value)
-			console.log('order', order.value)
+			// console.log('goods', goods.value)
+			// console.log('order', order.value)
 		})
 	}, 1000);
 

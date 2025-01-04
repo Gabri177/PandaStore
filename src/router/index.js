@@ -281,6 +281,6 @@ export function addRoutes(menus) {
 	find_add_routes_by_menus(menus)
 
 	return hasNewRoute
-	console.log('routers: ',router.getRoutes())
+	// console.log('routers: ',router.getRoutes())
 }
 ////////////////////////////////////////////////////////////////////

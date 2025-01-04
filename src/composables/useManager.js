@@ -54,22 +54,22 @@ export function useLogin() {
 			const valid = await formRef.value.validate();
 			if (valid) {
 
-				console.log('submit')
-				console.log('context of the form: ', form)
-				console.log(formRef.value)
+				// console.log('submit')
+				console.log('useManager.js Login提交表单: ', form)
+				// console.log(formRef.value)
 			}
 			store.dispatch('login', form).then((res) => {
 
-				console.log("login success: ", res.token)
+				console.log("useManager.js Login成功 token:", res.token)
 				router.push('/')
 			})
 			.catch((error) => {
-				console.log("login failed: ", error)
+				console.log("useManager.js Login失败 error:", error)
 			})
 			
 
 		} catch (error) {
-			console.log(error)
+			// console.log(error)
 		}
 	}
 
@@ -146,9 +146,9 @@ export function useRepassword() {
 			const valid = await formRef.value.validate();
 			if (valid) {
 
-				console.log('submit')
-				console.log('context of the form: ', form)
-				console.log(formRef.value)
+				// console.log('submit')
+				console.log('useManager.js 重设密码表单提交: ', form)
+				// console.log(formRef.value)
 			}
 			formDrawer.value.showLoading()
 			changePassword(form)
@@ -166,7 +166,7 @@ export function useRepassword() {
 
 
 		} catch (error) {
-			console.log(error)
+			// console.log(error)
 		}
 	}
 
@@ -245,7 +245,7 @@ export function useTablist() {
 		let tabListCookie = cookie.get('tabList')
 		if (tabListCookie) {
 			tabList.value = tabListCookie
-			console.log('cookie tabList: ', tabList.value)
+			// console.log('cookie tabList: ', tabList.value)
 		}
 	}
 
@@ -268,16 +268,16 @@ export function useTablist() {
 	onBeforeRouteUpdate((to, from) => {
 		
 		const p = String(to.meta.title)
-		console.log('title: ', p)
+		// console.log('title: ', p)
 		// 在dev环境中 是设置的单引号因此使用这个规则
 		let match = p.match(/'([^']+)'/)
 		if (!match)
 			// 在prod环境中 由于打包的时候会被转义成双引号因此使用这个规则
 			// 否则match为null
 			match = p.match(/"([^"]+)"/);
-		console.log('match: ', match)	
+		// console.log('match: ', match)	
 		if (match) {
-			console.log('title path : ' , match[1]);
+			// console.log('title path : ' , match[1]);
 			addTab({
 			title_key: match[1],
 			title: computed(() => to.meta.title()),
@@ -309,13 +309,13 @@ export function useTablist() {
 	const handleTabChange = (tab) => {
 		activeTab.value = tab
 		router.push(tab)
-		console.log('tab change: ', tab)
+		// console.log('tab change: ', tab)
 	}
 
 	watch(() => language.locale.value, () => {
 
-		console.log('locale change: ')
-		console.log('tabList: ', tabList.value)
+		// console.log('locale change: ')
+		// console.log('tabList: ', tabList.value)
 		tabList.value.forEach(tab => {
 			tab.title = computed(() => t(tab.title_key))
 		})

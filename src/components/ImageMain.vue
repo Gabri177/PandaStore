@@ -137,11 +137,11 @@ const handleCancel = () => {
 const handleConfirm = () => {
 	formRef.value.validate((valid) => {
 		if (valid) {
-			console.log('form', form)
+			// console.log('form', form)
 			dialogRef.value.showLoading()
 			updateImage(image_id, form.rename)
 			.then(res => {
-				console.log('updateImage:', res)
+				// console.log('updateImage:', res)
 				toast('success', '重命名成功')
 				getData(currentPage.value)
 				
@@ -161,30 +161,30 @@ const handleEdit = (item) => {
 	dialogRef.value.openDialog()
 	form.rename = item.name
 	image_id = item.id
-	console.log('handleEdit image_id: ', image_id)
+	// console.log('handleEdit image_id: ', image_id)
 }
 
 const handleDelete = (item) => {
 	
 	popOut(t('image.imageMain.popOut.title'), t('image.imageMain.popOut.message'))
 	.then(() => {
-		console.log ("handleDelete imageID: ", item.id)
+		// console.log ("handleDelete imageID: ", item.id)
 		deleteImage(item.id)
 		.then(res => {
-			console.log("图片删除成功", res)
+			// console.log("图片删除成功", res)
 			getData()
 			toast ('success', '删除成功')
 		})
 		.finally(() => {
-			console.log('finally-deleteImage')
+			// console.log('finally-deleteImage')
 		})
 	
 	})
 	.catch(() => {
-		console.log('cancel')
+		// console.log('cancel')
 	})
 	.finally(() => {
-		console.log('finally')
+		// console.log('finally')
 	})
 }
 
@@ -208,14 +208,14 @@ function getData(page = null, limit = 10) {
 		getImagesList(imageClassId.value, currentPage.value, limit)
 		.then(res => {
 
-			console.log('getData => res image list', res)
+			// console.log('getData => res image list', res)
 			list.value = res.list
 			totalPages.value = res.totalCount
 			// console.log('totalPages', totalPages.value)
 			
 		})
 		.catch((err)=>{
-			console.log('getData error: ', err)
+			// console.log('getData error: ', err)
 		})
 		.finally(() => {
 			loading.value = false
@@ -225,7 +225,7 @@ function getData(page = null, limit = 10) {
 
 // 根据分类获取图片列表
 const loadData = (id) => {
-	console.log('loadData', id)
+	// console.log('loadData', id)
 	currentPage.value = 1
 	imageClassId.value = id
 	getData()
@@ -233,13 +233,13 @@ const loadData = (id) => {
 
 // 上传事件处理
 const handleUploadSuccess = (res) => {
-	console.log('handleUploadSuccess', res)
+	// console.log('handleUploadSuccess', res)
 	getData()
 	uploadRef.value.closeDialog()
 }
 
 const handleUploadError = (error) => {
-	console.log('handleUploadError', error)
+	// console.log('handleUploadError', error)
 	uploadRef.value.closeDialog()
 }
 

@@ -172,9 +172,9 @@ const onConfirm = async () => {
 		const valid = await reg_formRef.value.validate();
 		if (valid) {
 
-			console.log('submit')
-			console.log('context of the form: ', reg_form)
-			console.log(reg_formRef.value)
+			// console.log('submit')
+			// console.log('context of the form: ', reg_form)
+			// console.log(reg_formRef.value)
 		}
 		formDrawer.value.showLoading()
 

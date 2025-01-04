@@ -128,7 +128,7 @@ const handleConfirm = async () => {
 			statePromise
 			.then(res => {
 				// 获取最新的分页数据
-				console.log('success', res)
+				console.log('ImageAside.vue 获取分页数据成功: ', res)
 				toast('success', '编辑成功');
 				return getImageClassList(currentPage.value, limitRef.value); 
 			})
@@ -199,8 +199,8 @@ function getData(page = null, limit = 10) {
 		currentPage.value = page
 	if (typeof limit == 'number')
 		limitRef.value = limit
-	console.log('limit value: ', limitRef.value)
-	console.log('getData', page)
+	// console.log('limit value: ', limitRef.value)
+	// console.log('getData', page)
 	loading.value = true
 	// 模拟请求返回时间为0.5秒钟
 	setTimeout(() => {

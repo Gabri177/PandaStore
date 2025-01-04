@@ -6,8 +6,8 @@ import qs from 'qs';
 const apiBaseURL = import.meta.env.VITE_API_BASE_URL;
 console.log("apiBaseURL: ", apiBaseURL)
 const service = axios.create({
-	  // baseURL: apiBaseURL + '/api',
-    baseURL: '/api',
+	  baseURL: apiBaseURL + '/api',
+    // baseURL: '/api',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded', // 设置全局默认 Content-Type
     }
@@ -25,7 +25,7 @@ service.interceptors.request.use(function (config) {
     }
     if (config.headers['Content-Type'] === 'application/x-www-form-urlencoded' && config.data) {
       config.data = qs.stringify(config.data); // 将数据序列化为 x-www-form-urlencoded 格式
-      console.log("序列化后的数据: ", config.data)
+      console.log("axios.js 序列化后的数据: ", config.data)
     }
 
     return config;
@@ -38,7 +38,7 @@ service.interceptors.request.use(function (config) {
 service.interceptors.response.use(function (response) {
     // Cualquier código de estado que este dentro del rango de 2xx causa la ejecución de esta función 
     // Haz algo con los datos de la respuesta
-    console.log("完整的回答: ", response)
+    console.log("axios.js 拦截器处理前的完整回答: ", response)
     return response.data.data;
   }, function (error) {
     // Cualquier código de estado que este fuera del rango de 2xx causa la ejecución de esta función

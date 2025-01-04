@@ -24,7 +24,7 @@ const store = createStore({
 		// 设置用户信息
 		SET_USER_INFO (state, user) {
 		  state.user = user
-		  console.log('SET_USER_INFO called: ', user)
+		//   console.log('SET_USER_INFO called: ', user)
 		},
 		// 展开或者收缩侧边栏
 		handleAsideWidth(state) {
@@ -61,7 +61,7 @@ const store = createStore({
 		login({commit}, {username, password}) {	
 			return new Promise((resolve, reject) => {
 				login({username, password}).then(res => {
-					console.log('login success: ', res)
+					// console.log('login success: ', res)
 					commit('SET_USER_INFO', res)
 					toast(t('login.loginAlert_title_success'), t('login.loginStatus_success'), 'success')
 					setToken(res.token)

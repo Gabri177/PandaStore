@@ -17,7 +17,7 @@ router.beforeEach(async (to, from, next) => {
 	
 	showFullScreenLoading()
 	const token = getToken()
-	console.log('token: ', token)
+	console.log('permission.js token: ', token)
 
 	//如果没有token并且不是登录页面
 	if (!token && to.path != '/login') {

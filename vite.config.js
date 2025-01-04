@@ -20,10 +20,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://ceshi13.dishait.cn/', // 目标服务器地址
+        target: 'https://www.leecode.fun/', // 目标服务器地址
         changeOrigin: true, // 修改请求头的来源
         rewrite: (path) => {
           console.log('代理重写路径:', path); // 打印被代理的路径
+          console.log('代理重写路径:', path.replace(/^\/api/, '')); // 打印被代理的路径
           return path.replace(/^\/api/, '');
         },
       },

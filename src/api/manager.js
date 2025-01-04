@@ -6,9 +6,7 @@ import { test } from '~/default/constant';
 //登录
 export function login(data) {
 
-	console.log("username: ", data.username)
-	console.log("password: ", data.password)
-	if (test.trigger == true) {
+	if (test.trigger != true) {  // 这里设置为真的api 已经用不等于来接通真的api
 		return test.login.success
 	}else {
 		return axios.post('/Admin/Login', {

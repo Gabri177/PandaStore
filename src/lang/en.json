@@ -75,6 +75,24 @@
 			"success_message": "Registration successful",
 			"error_title": "Error",
 			"error_message": "Registration failed"
+		},
+		"delete":{
+			"success_title": "Success",
+			"success_message": "Delete successful",
+			"error_title": "Error",
+			"error_message": "Delete failed"
+		},
+		"edit":{
+			"success_title": "Success",
+			"success_message": "Edit successful",
+			"error_title": "Error",
+			"error_message": "Edit failed"
+		},
+		"add":{
+			"success_title": "Success",
+			"success_message": "Add successful",
+			"error_title": "Error",
+			"error_message": "Add failed"
 		}
 	},
 	"drawer": {
@@ -245,6 +263,24 @@
 				"successTitle": "Upload Success",
 				"successMessage": "Image uploaded successfully"
 			}
+		}
+	},
+	"notice":{
+		"list":{
+			"table_title": "Notice Title",
+			"table_create_time": "Creation Time",
+			"table_operate": "Operation",
+			"button_add": "Add Notice",
+			"button_edit": "Edit",
+			"button_delete": "Delete",
+			"table_content": "Notice Content",
+			"add_title": "Add Notice",
+			"edit_title": "Edit Notice",
+			"delete_title": "Delete Notice",
+			"delete_msg": "Are you sure you want to delete",
+			"tip_refresh":"Refresh",
+			"rule_name":"Title cannot be empty",
+			"rule_content":"Content cannot be empty"
 		}
 	},
 	"后台面板": "Admin",

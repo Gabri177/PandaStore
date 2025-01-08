@@ -73,6 +73,24 @@
 			"success_message": "Registro exitoso",
 			"error_title": "Error",
 			"error_message": "Error al registrarse"
+		},
+		"delete":{
+			"success_title": "Éxito",
+			"success_message": "Eliminación exitosa",
+			"error_title": "Error",
+			"error_message": "Error al eliminar"
+		},
+		"edit":{
+			"success_title": "Éxito",
+			"success_message": "Edición exitosa",
+			"error_title": "Error",
+			"error_message": "Error al editar"
+		},
+		"add":{
+			"success_title": "Éxito",
+			"success_message": "Añadido exitosamente",
+			"error_title": "Error",
+			"error_message": "Error al añadir"
 		}
 	},
 	"drawer": {
@@ -243,6 +261,24 @@
 				"successTitle": "Éxito",
 				"successMessage": "Imagen subida con éxito"
 			}
+		}
+	},
+	"notice":{
+		"list":{
+			"table_title": "Título del aviso",
+			"table_create_time": "Fecha de creación",
+			"table_operate": "Operación",
+			"button_add": "Agregar aviso",
+			"button_edit": "Editar",
+			"button_delete": "Eliminar",
+			"table_content": "Contenido del aviso",
+			"add_title": "Agregar aviso",
+			"edit_title": "Editar aviso",
+			"delete_title": "Eliminar aviso",
+			"delete_msg": "¿Estás seguro de que deseas eliminar",
+			"tip_refresh":"Refrescar",
+			"rule_name":"El título no puede estar vacío",
+			"rule_content":"El contenido no puede estar vacío"
 		}
 	},
 	"后台面板": "Panel",

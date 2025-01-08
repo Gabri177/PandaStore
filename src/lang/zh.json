@@ -73,6 +73,24 @@
 			"success_message": "注册成功",
 			"error_title": "错误",
 			"error_message": "注册失败"
+		},
+		"delete":{
+			"success_title": "成功",
+			"success_message": "删除成功",
+			"error_title": "错误",
+			"error_message": "删除失败"
+		},
+		"edit":{
+			"success_title": "成功",
+			"success_message": "编辑成功",
+			"error_title": "错误",
+			"error_message": "编辑失败"
+		},
+		"add":{
+			"success_title": "成功",
+			"success_message": "新增成功",
+			"error_title": "错误",
+			"error_message": "新增失败"
 		}
 	},
 	"drawer": {
@@ -243,6 +261,24 @@
 				"successTitle": "成功",
 				"successMessage": "上传成功"
 			}
+		}
+	},
+	"notice":{
+		"list":{
+			"table_title": "通知标题",
+			"table_create_time": "创建时间",
+			"table_operate": "操作",
+			"button_add": "新增通知",
+			"button_edit": "编辑",
+			"button_delete": "删除",
+			"table_content": "通知内容",
+			"add_title": "新增通知",
+			"edit_title": "编辑通知",
+			"delete_title": "删除通知",
+			"delete_msg": "你确定要删除",
+			"tip_refresh":"刷新",
+			"rule_name":"标题不能为空",
+			"rule_content":"内容不能为空"
 		}
 	},
 	"后台面板": "后台面板",

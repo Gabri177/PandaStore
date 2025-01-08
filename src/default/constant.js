@@ -80,38 +80,6 @@ export const defaultAsideMenu =  [
 				"icon": "menu",
 				"method": "GET",
 				"child": []
-			},
-			{
-				"id": 15,
-				"rule_id": 6,
-				"status": 1,
-				"create_time": "XXXXXXXXXX",
-				"update_time": "XXXXXXXXXX",
-				"name": "规格管理",
-				"desc": "shop_sku_list",
-				"frontpath": "/skus/list",
-				"condition": "",
-				"menu": 1,
-				"order": 20,
-				"icon": "aim",
-				"method": "GET",
-				"child": []
-			},
-			{
-				"id": 157,
-				"rule_id": 6,
-				"status": 1,
-				"create_time": "XXXXXXXXXX",
-				"update_time": "XXXXXXXXXX",
-				"name": "优惠券管理",
-				"desc": "shop_coupon_list",
-				"frontpath": "/coupon/list",
-				"condition": "",
-				"menu": 1,
-				"order": 50,
-				"icon": "postcard",
-				"method": "GET",
-				"child": []
 			}
 		]
 	},
@@ -145,22 +113,6 @@ export const defaultAsideMenu =  [
 				"icon": "user-filled",
 				"method": "GET",
 				"child": []
-			},
-			{
-				"id": 22,
-				"rule_id": 173,
-				"status": 1,
-				"create_time": "XXXXXXXXXX",
-				"update_time": "XXXXXXXXXX",
-				"name": "会员等级",
-				"desc": "user_user-level_list",
-				"frontpath": "/level/list",
-				"condition": "",
-				"menu": 1,
-				"order": 20,
-				"icon": "data-analysis",
-				"method": "GET",
-				"child": []
 			}
 		]
 	},
@@ -192,22 +144,6 @@ export const defaultAsideMenu =  [
 				"menu": 1,
 				"order": 1,
 				"icon": "reading",
-				"method": "GET",
-				"child": []
-			},
-			{
-				"id": 17,
-				"rule_id": 7,
-				"status": 1,
-				"create_time": "XXXXXXXXXX",
-				"update_time": "XXXXXXXXXX",
-				"name": "评论管理",
-				"desc": "shop_comment_list",
-				"frontpath": "/comment/list",
-				"condition": "",
-				"menu": 1,
-				"order": 20,
-				"icon": "comment",
 				"method": "GET",
 				"child": []
 			}
@@ -306,87 +242,6 @@ export const defaultAsideMenu =  [
 				"menu": 1,
 				"order": 19,
 				"icon": "baseball",
-				"method": "GET",
-				"child": []
-			},
-			{
-				"id": 26,
-				"rule_id": 9,
-				"status": 1,
-				"create_time": "XXXXXXXXXX",
-				"update_time": "XXXXXXXXXX",
-				"name": "交易设置",
-				"desc": "set_payment",
-				"frontpath": "/setting/buy",
-				"condition": "",
-				"menu": 1,
-				"order": 20,
-				"icon": "credit-card",
-				"method": "GET",
-				"child": []
-			},
-			{
-				"id": 24,
-				"rule_id": 9,
-				"status": 1,
-				"create_time": "XXXXXXXXXX",
-				"update_time": "XXXXXXXXXX",
-				"name": "物流设置",
-				"desc": "set_express",
-				"frontpath": "/setting/ship",
-				"condition": "",
-				"menu": 1,
-				"order": 21,
-				"icon": "bicycle",
-				"method": "GET",
-				"child": []
-			}
-		]
-	},
-	{
-		"id": 177,
-		"rule_id": 0,
-		"status": 1,
-		"create_time": "XXXXXXXXXX",
-		"update_time": "XXXXXXXXXX",
-		"name": "分销模块",
-		"desc": null,
-		"frontpath": "",
-		"condition": "",
-		"menu": 1,
-		"order": 7,
-		"icon": "shopping-cart",
-		"method": "GET",
-		"child": [
-			{
-				"id": 178,
-				"rule_id": 177,
-				"status": 1,
-				"create_time": "XXXXXXXXXX",
-				"update_time": "XXXXXXXXXX",
-				"name": "分销员管理",
-				"desc": null,
-				"frontpath": "/distribution/index",
-				"condition": "",
-				"menu": 1,
-				"order": 50,
-				"icon": "user-filled",
-				"method": "GET",
-				"child": []
-			},
-			{
-				"id": 179,
-				"rule_id": 177,
-				"status": 1,
-				"create_time": "XXXXXXXXXX",
-				"update_time": "XXXXXXXXXX",
-				"name": "分销设置",
-				"desc": null,
-				"frontpath": "/distribution/setting",
-				"condition": "",
-				"menu": 1,
-				"order": 50,
-				"icon": "set-up",
 				"method": "GET",
 				"child": []
 			}

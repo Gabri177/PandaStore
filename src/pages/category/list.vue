@@ -69,7 +69,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, reactive } from 'vue';
 import { popOut, toast } from '~/composables/util'
-import Dialog from '~/components/Dialog.vue';
+import Dialog from '~/components/Dialog.vue'
 import { lang } from '~/lang';
 ///////////////////////////////////////////////////////////////// 多语言
 

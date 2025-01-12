@@ -48,7 +48,7 @@
 			</div>
 		</el-container>
 
-		<Dialog title="添加分类" ref="addDialogRef" @confirm="handleAddCategory" @cancel="handleCancelAdd">
+		<DiaLog title="添加分类" ref="addDialogRef" @confirm="handleAddCategory" @cancel="handleCancelAdd">
 			<el-form :model="form">
 				<el-form-item label="上级分类">
 					<el-select v-model="newCategory.firstClass" placeholder="请选择上级分类">
@@ -61,7 +61,7 @@
 					<el-input v-model="newCategory.secondClass"></el-input>
 				</el-form-item>
 			</el-form>
-		</Dialog>
+		</DiaLog>
 	</el-container>
 </template>
 
@@ -69,8 +69,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, reactive } from 'vue'
 import { popOut, toast } from '~/composables/util'
-import DiaLog from '~/components/DiaLog.vue'
-
+import DiaLog from '~/components/Dialog.vue'
 import { lang } from '~/lang'
 ///////////////////////////////////////////////////////////////// 多语言
 

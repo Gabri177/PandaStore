@@ -67,10 +67,11 @@
 
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, reactive } from 'vue';
+import { ref, onMounted, onBeforeUnmount, reactive } from 'vue'
 import { popOut, toast } from '~/composables/util'
-import Dialog from '~/components/Dialog.vue'
-import { lang } from '~/lang';
+import DiaLog from '~/components/DiaLog.vue'
+
+import { lang } from '~/lang'
 ///////////////////////////////////////////////////////////////// 多语言
 
 const { t } = lang.global

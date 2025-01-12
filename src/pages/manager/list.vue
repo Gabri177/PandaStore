@@ -172,14 +172,15 @@ const handleDelete = (row) => {
 			setTimeout(() => {
 				tableData.value = tableData.value.filter(item => item != row)
 				toast(t('toast.delete.success_title'), t('toast.delete.success_message'))
+				console.log('Delete Confirm success')
 				loading.value = false
 			}, 500);
-			toast(t('toast.delete.error_title'), t('toast.delete.error_message'), 'error')
+			//toast(t('toast.delete.error_title'), t('toast.delete.error_message'), 'error')
 		})
 		.catch(() => {
 			loading.value = false
 		})
-	// console.log('delete')
+	console.log('handle Delete')
 }
 
 

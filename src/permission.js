@@ -1,5 +1,5 @@
 import { router, addRoutes } from "~/router"
-import { getToken } from "~/composables/auth"
+import { getToken, setToken, isTokenExpired, removeToken } from "~/composables/auth"
 import { toast, showFullScreenLoading, hideFullScreenLoading } from "~/composables/util"
 import { lang } from "~/lang"
 import store from "~/store"
@@ -42,6 +42,12 @@ router.beforeEach(async (to, from, next) => {
 		// 动态添加路由
 		hasNewRoute = addRoutes(defaultAsideMenu)
 		////////////////////////////////////
+	}
+
+	if (token && isTokenExpired()) {
+		toast('警告', '登录已过期, 请重新登陆!', 'warning')
+		removeToken()
+		router.push('/')
 	}
 
 	// 设置页面标题

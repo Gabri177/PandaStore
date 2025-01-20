@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { getToken } from '~/composables/auth.js';
-import qs from 'qs';
 
 
 const apiBaseURL = import.meta.env.VITE_API_BASE_URL;
@@ -8,9 +7,9 @@ console.log("apiBaseURL: ", apiBaseURL)
 const service = axios.create({
 	  baseURL: apiBaseURL + '/api',
     // baseURL: '/api',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded', // 设置全局默认 Content-Type
-    }
+    // headers: {
+    //   'Content-Type': 'application/x-www-form-urlencoded', // 设置全局默认 Content-Type
+    // }
 });
 
 // Agregar un interceptor a la petición
@@ -23,10 +22,10 @@ service.interceptors.request.use(function (config) {
       config.headers['Authorization'] = `Bearer ${token}`; // Bearer 是常见的 Token 前缀
       config.headers['token'] = token;
     }
-    if (config.headers['Content-Type'] === 'application/x-www-form-urlencoded' && config.data) {
-      config.data = qs.stringify(config.data); // 将数据序列化为 x-www-form-urlencoded 格式
-      console.log("axios.js 序列化后的数据: ", config.data)
-    }
+    // if (config.headers['Content-Type'] === 'application/x-www-form-urlencoded' && config.data) {
+    //   config.data = qs.stringify(config.data); // 将数据序列化为 x-www-form-urlencoded 格式
+    //   console.log("axios.js 序列化后的数据: ", config.data)
+    // }
 
     return config;
   }, function (error) {

@@ -30,8 +30,10 @@
     "vue-draggable-plus": "^0.6.0",
     "vue-i18n": "^9.14.2",
     "vue-router": "^4.5.0",
+    "vue3-xlsx": "^1.1.2",
     "vuedraggable": "^2.24.3",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",

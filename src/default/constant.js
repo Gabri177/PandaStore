@@ -960,6 +960,53 @@ const defaultImagesAll = {
 }
 
 
+const defaultCategory = {
+	"firstClassCategory": [
+		{
+			"id": 1,
+			"label": 'Category 1',
+			"order": 1,
+			"isShowable": true
+		},
+		{
+			"id": 2,
+			"label": 'Category 2',
+			"order": 2,
+			"isShowable": true
+		},
+		{
+			"id": 3,
+			"label": 'Category 3',
+			"order": 3,
+			"isShowable": true
+		},
+		{
+			"id": 4,
+			"label": 'Category 4',
+			"order": 4,
+			"isShowable": true
+		}
+	],
+	"secondClassCategory": [
+		{
+			"id": 31,
+			"label": 'Subcategory 3-1',
+			"order": 1,
+			"parentId": 3,
+			'isShowable': true
+		},
+		{
+			"id": 32,
+			"label": 'Subcategory 3-2',
+			"order": 2,
+			"parentId": 3,
+			"isShowable": true
+		}
+	],
+	"firstClassLength": 4,
+	"secondClassLength": 2
+}
+
 export const test = {
 	"trigger": true,
 	"login": {
@@ -1084,6 +1131,10 @@ export const test = {
 		// console.log('remove_target:', remove_target);
 
 		return Promise.resolve(remove_target);
+	},
+	"f_getAllCategory": function () {
+
+		return Promise.resolve(defaultCategory)
 	}
 }
 

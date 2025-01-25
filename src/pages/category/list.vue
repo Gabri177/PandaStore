@@ -68,6 +68,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, reactive } from 'vue'
+import { getAllCategory } from '~/api/category'
 import { popOut, toast } from '~/composables/util'
 import DiaLog from '~/components/DiaLog.vue'
 import { lang } from '~/lang'
@@ -163,55 +164,75 @@ const allowDrag = (draggingNode) => {
 	return !draggingNode.data.label.includes('Level three 3-1-1');
 };
 
-///////////////////////////////////////////////////////////////// 批量删除分类
+
+const tableData = ref('')
+let rawData = {}
+const isCheckable = ref(false)
+const tree = ref(null)
+
 const getData = () => {
-	return {
-		firstClassCategory: [
-			{
-				id: 1,
-				label: 'Category 1',
-				order: 1,
-				isShowable: true
-			},
-			{
-				id: 2,
-				label: 'Category 2',
-				order: 2,
-				isShowable: true
-			},
-			{
-				id: 3,
-				label: 'Category 3',
-				order: 3,
-				isShowable: true
-			},
-			{
-				id: 4,
-				label: 'Category 4',
-				order: 4,
-				isShowable: true
-			}
-		],
-		secondClassCategory: [
-			{
-				id: 31,
-				label: 'Subcategory 3-1',
-				order: 1,
-				parentId: 3,
-				isShowable: true
-			},
-			{
-				id: 32,
-				label: 'Subcategory 3-2',
-				order: 2,
-				parentId: 3,
-				isShowable: true
-			}
-		],
-		firstClassLength: 4,
-		secondClassLength: 2
-	}
+	// return {
+	// 	firstClassCategory: [
+	// 		{
+	// 			id: 1,
+	// 			label: 'Category 1',
+	// 			order: 1,
+	// 			isShowable: true
+	// 		},
+	// 		{
+	// 			id: 2,
+	// 			label: 'Category 2',
+	// 			order: 2,
+	// 			isShowable: true
+	// 		},
+	// 		{
+	// 			id: 3,
+	// 			label: 'Category 3',
+	// 			order: 3,
+	// 			isShowable: true
+	// 		},
+	// 		{
+	// 			id: 4,
+	// 			label: 'Category 4',
+	// 			order: 4,
+	// 			isShowable: true
+	// 		}
+	// 	],
+	// 	secondClassCategory: [
+	// 		{
+	// 			id: 31,
+	// 			label: 'Subcategory 3-1',
+	// 			order: 1,
+	// 			parentId: 3,
+	// 			isShowable: true
+	// 		},
+	// 		{
+	// 			id: 32,
+	// 			label: 'Subcategory 3-2',
+	// 			order: 2,
+	// 			parentId: 3,
+	// 			isShowable: true
+	// 		}
+	// 	],
+	// 	firstClassLength: 4,
+	// 	secondClassLength: 2
+	// }
+
+	getAllCategory()
+	.then((res) => {
+		// console.log('res', res);
+		// console.log('handleData res', handleData(res));
+		tableData.value = handleData(res);
+		rawData = res;
+		return res;
+	})
+	.catch((err) => {
+		console.log('err', err);
+		toast('error', 'Failed to get category data');
+	});
+	
 }
+getData();
 
 const handleData = (data) => {
 	const firstClassCategory = data.firstClassCategory;
@@ -229,15 +250,8 @@ const handleData = (data) => {
 	return categories;
 };
 
-const tableData = ref('')
-const rawData = getData();
 
-tableData.value = handleData(rawData);
-
-const isCheckable = ref(false);
-const tree = ref(null);
-
-
+///////////////////////////////////////////////////////////////// 批量删除分类
 const handleDeleteAll = () => {
 
 	

@@ -21,10 +21,11 @@
 		</el-header>
 		<el-main style="overflow-y: auto;" class="w-full">
 
-			<el-table :data="tableData" :style="{ height: h - 60 - 40 + 'px' }" v-loading="loading">
+			<el-table ref="tableRef" :data="tableData" :style="{ height: h - 60 - 40 + 'px' }" v-loading="loading"
+			@selection-change="handleSelectionChange">
 
 				<el-table-column type="selection" v-if="isSelectable" width="55" />
-				<el-table-column label="商品头像" width="300">
+				<el-table-column label="商品详情" width="300">
 					<template #default="{ row }">
 						<div class="flex items-center">
 							<div>
@@ -45,7 +46,7 @@
 					</template>
 				</el-table-column>
 
-				<el-table-column prop="goodName" label="商品名称" />
+				<el-table-column prop="sales" label="商品销量" />
 				<el-table-column prop="state" label="上架状态">
 					<template #default="{ row }">
 						<el-tag v-if="row.state === 'onSale'" type="success">上架中</el-tag>
@@ -53,9 +54,10 @@
 					</template>
 				</el-table-column>
 				<el-table-column prop="stock" label="库存余量" />
-				<el-table-column label="操作" width="180">
+				<el-table-column label="操作" width="250">
 					<template #default="{ row }">
 						<el-button type="text" size="small" @click="handleEdit(row)">编辑</el-button>
+						<el-button type="text" size="small" @click="handleEditGraphs(row)">设置轮播图</el-button>
 						<el-button type="text" size="small" @click="handleDelete(row)">删除</el-button>
 					</template>
 				</el-table-column>
@@ -71,12 +73,18 @@
 
 	</el-container>
 	<ExcelUploader ref = "uploaderRef" @confirm="handleUpdateGoods"/>
+	<FormDrawer ref = "formDrawerRef" 
+	formTitle="添加商品"
+	:withHeader="true"
+	:destroyOnClose="true"
+	formSize="60%"></FormDrawer>
 </template>
 
 <script setup>
 
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import ExcelUploader from '~/components/ExcelUploader.vue';
+import FormDrawer from '../../components/FormDrawer.vue';
 
 const input_search = ref('');
 const loading = ref(false);
@@ -85,18 +93,54 @@ const pageSizeRef = ref(50);
 const totalPageRef = ref(1000);
 const uploaderRef = ref(null);
 const isSelectable = ref(false);
+const tableRef = ref(null);
+const formDrawerRef = ref(null);
+let selectedGoodsIds = [];
+
+///////////////////////////////////////////////////////////////// 添加商品
+
+const handleAdd = () => {
+	console.log("Add goods");
+	formDrawerRef.value.open();
+};
+
+///////////////////////////////////////////////////////////////// 删除商品
+
+const handleDelete = (row) => {
+	console.log("Delete goods: ", row);
+};
+
+///////////////////////////////////////////////////////////////// 编辑商品
+
+const handleEdit = (row) => {
+	console.log("Edit goods: ", row);
+};
 
 ///////////////////////////////////////////////////////////////// 批量删除
 
 const handleDeleteAll = () => {
 	if (!isSelectable.value) {
+		//当点击批量删除 进入选择状态
 		console.log("Delete all goods");
 		isSelectable.value = true;
 	} else {
+		//当点击确认删除 进行删除操作
+		console.log("Selected goods ids: ", selectedGoodsIds);
 		console.log("Confirm delete all goods");
 		isSelectable.value = false;
+		clearTableSelection();
+
 	}
 	
+};
+
+const handleSelectionChange = (val) => {
+	console.log("handle Selection changed: ",val);
+	selectedGoodsIds = val.map(item => item.id);
+};
+
+const clearTableSelection = () => {
+	tableRef.value.clearSelection();
 };
 
 ///////////////////////////////////////////////////////////////// 批量添加
@@ -161,6 +205,7 @@ onBeforeUnmount(() => {
 
 const tableData = [
 	{
+		id: 1,
 		avatar: "https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg",
 
 		goodName: '商品1',
@@ -171,9 +216,11 @@ const tableData = [
 		upperPrice: '200',
 		category: '分类1',
 		createTime: '2021-10-10',
-		editTime: '2021-10-10'
+		editTime: '2021-10-10',
+		sales: '100'
 	},
 	{
+		id: 2,
 		avatar: "https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg",
 		goodName: '商品2',
 		state: 'onSale',
@@ -183,9 +230,11 @@ const tableData = [
 		upperPrice: '300',
 		category: '分类2',
 		createTime: '2021-10-10',
-		editTime: '2021-10-10'
+		editTime: '2021-10-10',
+		sales: '200'
 	},
 	{
+		id: 3,
 		avatar: "https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg",
 
 		goodName: '商品3',
@@ -196,11 +245,13 @@ const tableData = [
 		upperPrice: '400',
 		category: '分类3',
 		createTime: '2021-10-10',
-		editTime: '2021-10-10'
+		editTime: '2021-10-10',
+		sales: '300'
 
 
 	},
 	{
+		id: 4,
 		avatar: "https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg",
 
 		goodName: '商品4',
@@ -211,7 +262,8 @@ const tableData = [
 		upperPrice: '500',
 		category: '分类4',
 		createTime: '2021-10-10',
-		editTime: '2021-10-10'
+		editTime: '2021-10-10',
+		sales: '400'
 
 	}
 ]

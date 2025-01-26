@@ -38,3 +38,31 @@ export function hideFullScreenLoading() {
 	
 	nprogress.done()
 }
+
+export function handleCategoryData(data){
+	const firstClassCategory = addCategoryValue(data.firstClassCategory);
+	const secondClassCategory = addCategoryValue(data.secondClassCategory);
+
+	const categories = firstClassCategory.map((item) => {
+		const children = secondClassCategory.filter((child) => child.parentId === item.id);
+		return {
+			...item,
+			children
+		};
+	});
+
+	console.log('categories', categories);
+	return categories;
+};
+
+function addCategoryValue(data){
+
+	const newClassCategory = data.map((item) => {
+		return {
+			...item,
+			value: item.label
+		};
+	});
+
+	return newClassCategory;
+}

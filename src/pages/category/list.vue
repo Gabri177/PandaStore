@@ -69,7 +69,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, reactive } from 'vue'
 import { getAllCategory } from '~/api/category'
-import { popOut, toast } from '~/composables/util'
+import { popOut, toast, handleCategoryData } from '~/composables/util'
 import DiaLog from '~/components/DiaLog.vue'
 import { lang } from '~/lang'
 ///////////////////////////////////////////////////////////////// 多语言
@@ -222,7 +222,7 @@ const getData = () => {
 	.then((res) => {
 		// console.log('res', res);
 		// console.log('handleData res', handleData(res));
-		tableData.value = handleData(res);
+		tableData.value = handleCategoryData(res);
 		rawData = res;
 		return res;
 	})
@@ -234,21 +234,21 @@ const getData = () => {
 }
 getData();
 
-const handleData = (data) => {
-	const firstClassCategory = data.firstClassCategory;
-	const secondClassCategory = data.secondClassCategory;
+// const handleData = (data) => {
+// 	const firstClassCategory = data.firstClassCategory;
+// 	const secondClassCategory = data.secondClassCategory;
 
-	const categories = firstClassCategory.map((item) => {
-		const children = secondClassCategory.filter((child) => child.parentId === item.id);
-		return {
-			...item,
-			children
-		};
-	});
+// 	const categories = firstClassCategory.map((item) => {
+// 		const children = secondClassCategory.filter((child) => child.parentId === item.id);
+// 		return {
+// 			...item,
+// 			children
+// 		};
+// 	});
 
-	console.log('categories', categories);
-	return categories;
-};
+// 	console.log('categories', categories);
+// 	return categories;
+// };
 
 
 ///////////////////////////////////////////////////////////////// 批量删除分类

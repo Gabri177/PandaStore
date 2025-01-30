@@ -57,10 +57,9 @@
 					</template>
 				</el-table-column>
 				<el-table-column prop="stock" label="库存余量"  header-align="center"  align="center"/>
-				<el-table-column label="操作" width="250"  header-align="center" align="center">
+				<el-table-column label="操作"  header-align="center" align="center">
 					<template #default="{ row }">
 						<el-button type="text" size="small" @click="handleEdit(row)">编辑</el-button>
-						<el-button type="text" size="small" @click="handleEditGraphs(row)">设置轮播图</el-button>
 						<el-button type="text" size="small" @click="handleDelete(row)">删除</el-button>
 					</template>
 				</el-table-column>
@@ -78,10 +77,18 @@
 
 	</el-container>
 	<ExcelUploader ref="uploaderRef" @confirm="handleUpdateGoods" />
+	<el-dialog v-model="dialogVisible">
+    	<img w-full :src="dialogImageUrl" alt="Preview Image" />
+  	</el-dialog>
 	<FormDrawer ref="formDrawerRef" formTitle="添加商品" :withHeader="true" :destroyOnClose="true" formSize="60%"
 		@submit="handleSubmit">
 
 		<el-form :model="formData" :rules="rules" ref="formRef" label-width="120px" class="p-4">
+
+			<ChooseImage v-model="formData.bannersImage"/>
+			
+			
+			
 			<el-form-item label="名称" prop="name">
 				<el-input v-model="formData.name" placeholder="请输入名称"></el-input>
 			</el-form-item>
@@ -102,9 +109,12 @@
 						placeholder="请输入最低价"></el-input-number>
 				</el-form-item>
 
+
 				<el-form-item label="最低价折扣" prop="lowestPriceDiscount">
 					<el-input v-model="formData.lowestPriceDiscount" placeholder="请输入最低价折扣"></el-input>
 				</el-form-item>
+
+
 			</div>
 			<div class="flex w-full justify-between">
 				<el-form-item label="中间价1" prop="middlePrice1">
@@ -175,17 +185,20 @@
 		</el-form>
 
 	</FormDrawer>
+	
 	<ImageMain ref="imageMainRef" />
 </template>
 
 <script setup>
 
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
 import ExcelUploader from '~/components/ExcelUploader.vue';
 import FormDrawer from '../../components/FormDrawer.vue';
 import { getAllCategory } from '~/api/category';
 import { handleCategoryData, toast, popOut } from '~/composables/util';
 import ImageMain from '~/components/ImageMain.vue';
+import ChooseImage from '~/components/ChooseImage.vue';
+import { useTransition } from '@vueuse/core'
 
 const input_search = ref('');
 const loading = ref(false);
@@ -223,6 +236,67 @@ const formData = ref({
 	variantName: '',
 });
 
+///////////////////////////////////////////////////////////////// 计算属性
+
+
+// const source = ref(0)
+
+// const outputLowestValue = useTransition(source, {
+//   duration: 1500,
+// })
+
+// source.value = formData.value.lowestPrice
+
+
+///////////////////////////////////////////////////////////////// 设置轮播图
+
+const fileList = ref([
+  {
+    name: 'food.jpeg',
+    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+  },
+  {
+    name: 'plant-1.png',
+    url: '/images/plant-1.png',
+  },
+  {
+    name: 'food.jpeg',
+    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+  },
+  {
+    name: 'plant-2.png',
+    url: '/images/plant-2.png',
+  },
+  {
+    name: 'food.jpeg',
+    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+  },
+  {
+    name: 'figure-1.png',
+    url: '/images/figure-1.png',
+  },
+  {
+    name: 'food.jpeg',
+    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+  },
+  {
+    name: 'figure-2.png',
+    url: '/images/figure-2.png',
+  },
+])
+
+
+const dialogImageUrl = ref('')
+const dialogVisible = ref(false)
+
+const handleRemove = (uploadFile, uploadFiles) => {
+  console.log(uploadFile, uploadFiles)
+}
+
+const handlePictureCardPreview = (uploadFile) => {
+  dialogImageUrl.value = uploadFile.url
+  dialogVisible.value = true
+}
 ///////////////////////////////////////////////////////////////// 切换上架状态
 
 const handleSwitchChange = (rowInfo, val) => {
@@ -272,9 +346,11 @@ const handleSubmit = () => {
 	formRef.value.validate((valid) => {
 		if (valid) {
 			console.log('提交表单数据：', formData.value);
+			toast('成功', '修改成功 ....');
 			formDrawerRef.value.close();
 		} else {
 			console.error('表单验证失败');
+			toast('错误', '请检查表单数据', 'error');
 		}
 	});
 };
@@ -417,10 +493,10 @@ const tableData = [
 		middlePrice1: '150',
 		middlePrice2: '200',
 		highestPrice: '200',
-		lowestPriceDiscount: '0.8',
-		middlePrice1Discount: '0.7',
-		middlePrice2Discount: '0.6',
-		highestPriceDiscount: '0.5',
+		lowestPriceDiscount: '80',
+		middlePrice1Discount: '70',
+		middlePrice2Discount: '60',
+		highestPriceDiscount: '50',
 		saleUnit: '$',
 		minPurchaseUnit: 'Unidad',
 		category: '分类1',
@@ -429,7 +505,8 @@ const tableData = [
 		variantName: 'xxxxx',
 		createTime: '2021-10-10',
 		editTime: '2021-10-10',
-		sales: '100'
+		sales: '100',
+		bannersImage:[]
 	},
 	{
 		id: 2,
@@ -443,10 +520,10 @@ const tableData = [
 		middlePrice1: '250',
 		middlePrice2: '300',
 		highestPrice: '300',
-		lowestPriceDiscount: '0.8',
-		middlePrice1Discount: '0.7',
-		middlePrice2Discount: '0.6',
-		highestPriceDiscount: '0.5',
+		lowestPriceDiscount: '80',
+		middlePrice1Discount: '70',
+		middlePrice2Discount: '60',
+		highestPriceDiscount: '50',
 		saleUnit: '$',
 		minPurchaseUnit: 'Unidad',
 		category: '分类2',
@@ -455,7 +532,8 @@ const tableData = [
 		variantName: 'xxxxx',
 		createTime: '2021-10-10',
 		editTime: '2021-10-10',
-		sales: '200'
+		sales: '200',
+		bannersImage:[]
 	},
 	{
 		id: 3,
@@ -469,10 +547,10 @@ const tableData = [
 		middlePrice1: '350',
 		middlePrice2: '400',
 		highestPrice: '400',
-		lowestPriceDiscount: '0.8',
-		middlePrice1Discount: '0.7',
-		middlePrice2Discount: '0.6',
-		highestPriceDiscount: '0.5',
+		lowestPriceDiscount: '80',
+		middlePrice1Discount: '70',
+		middlePrice2Discount: '60',
+		highestPriceDiscount: '50',
 		saleUnit: '$',
 		minPurchaseUnit: 'Unidad',
 		category: '分类3',
@@ -481,7 +559,8 @@ const tableData = [
 		variantName: 'xxxxx',
 		createTime: '2021-10-10',
 		editTime: '2021-10-10',
-		sales: '300'
+		sales: '300',
+		bannersImage:[]
 
 
 	},
@@ -497,10 +576,10 @@ const tableData = [
 		middlePrice1: '450',
 		middlePrice2: '500',
 		highestPrice: '500',
-		lowestPriceDiscount: '0.8',
-		middlePrice1Discount: '0.7',
-		middlePrice2Discount: '0.6',
-		highestPriceDiscount: '0.5',
+		lowestPriceDiscount: '80',
+		middlePrice1Discount: '70',
+		middlePrice2Discount: '60',
+		highestPriceDiscount: '50',
 		saleUnit: '$',
 		minPurchaseUnit: 'Unidad',
 		category: '分类4',
@@ -509,7 +588,8 @@ const tableData = [
 		variantName: 'xxxxx',
 		createTime: '2021-10-10',
 		editTime: '2021-10-10',
-		sales: '400'
+		sales: '400',
+		bannersImage:[]
 
 	}
 ]

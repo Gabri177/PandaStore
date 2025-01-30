@@ -29,13 +29,13 @@
 					<template #default="{ row }">
 						<div class="flex flex-col justify-center items-start">
 							<el-tag type="primary" class="mb-1 font-bold">
-								{{ row.lowestPrice ? formatNumber(row.lowestPrice) : "未知最低价" }}€ x {{ row.lowestPriceDiscount }}</el-tag>
+								{{ row.lowestPrice ? formatNumber(row.lowestPrice) : "未知最低价" }}€ x {{ row.lowestPriceDiscount }}%</el-tag>
 							<el-tag type="success" class="mb-1 font-bold">
-								{{ row.middlePrice1 ? formatNumber(row.middlePrice1) : "未知中间价" }}€ x {{ row.middlePrice1Discount }}</el-tag>
+								{{ row.middlePrice1 ? formatNumber(row.middlePrice1) : "未知中间价" }}€ x {{ row.middlePrice1Discount }}%</el-tag>
 							<el-tag type="warning" class="mb-1 font-bold">
-								{{ row.middlePrice2 ? formatNumber(row.middlePrice2) : "未知中间价" }}€ x {{ row.middlePrice2Discount }}</el-tag>
+								{{ row.middlePrice2 ? formatNumber(row.middlePrice2) : "未知中间价" }}€ x {{ row.middlePrice2Discount }}%</el-tag>
 							<el-tag type="danger" class="font-bold">
-								{{ row.highestPrice ? formatNumber(row.highestPrice) : "未知最高价" }}€ x {{ row.highestPriceDiscount }}</el-tag>
+								{{ row.highestPrice ? formatNumber(row.highestPrice) : "未知最高价" }}€ x {{ row.highestPriceDiscount }}%</el-tag>
 						</div>
 					</template>
 				</el-table-column>
@@ -172,12 +172,13 @@ const handleBeforeUpload = (file) => {
 		console.log("提取到的数据: ", jsonData);
 
 		// 解析数据
-		const rows = jsonData.slice(1).map((row) =>
+		const rows = jsonData.slice(1)
+			.map((row) =>
 			headers.reduce((acc, header, index) => {
 				acc[standardHeader[header]] = row[index] || null;
 				return acc;
-			}, {})
-		);
+			}, {}))
+			.filter(row => Object.values(row).some(value => value !== null && value !== ""));
 		//更新响应式数据		
 		parsedData.value = rows;
 		// 显示数据展示对话框

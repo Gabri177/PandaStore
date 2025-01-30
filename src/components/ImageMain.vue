@@ -7,7 +7,7 @@
 				:offset="0"
 				v-for="(item, index) in list"
 				:key="index">
-					<el-card shadow="hover" class="relative mb-3" :body-style="{ padding: '0px' }">
+					<el-card shadow="hover" class="relative mb-3" :body-style="{ padding: '0px' }" :class="{'border-blue-500':item.checked}">
 						<el-image
 						fit="cover"
 						class="h-[150px]"
@@ -20,8 +20,11 @@
 							{{ item.name }}
 						</div>
 						<div class="flex justify-center items-center p-2 ">
+
+							<el-checkbox v-model="item.checked" @change="handleChooseChange(item)"></el-checkbox>
+							
 							<el-button type="primary" size="small" text @click="handleEdit(item)">{{ $t('image.imageMain.edit') }}</el-button>
-							<el-button type="primary" size="small" text @click="handleDelete(item)">{{ $t('image.imageMain.delete') }}</el-button>
+							<el-button class="!m-0" type="primary" size="small" text @click="handleDelete(item)">{{ $t('image.imageMain.delete') }}</el-button>
 						</div>
 					</el-card>
 				</el-col>
@@ -209,7 +212,10 @@ function getData(page = null, limit = 10) {
 		.then(res => {
 
 			// console.log('getData => res image list', res)
-			list.value = res.list
+			list.value = res.list.map(item => {
+				item.checked = false
+				return item
+			})
 			totalPages.value = res.totalCount
 			// console.log('totalPages', totalPages.value)
 			
@@ -241,6 +247,21 @@ const handleUploadSuccess = (res) => {
 const handleUploadError = (error) => {
 	// console.log('handleUploadError', error)
 	uploadRef.value.closeDialog()
+}
+
+//选中的图片
+const emit = defineEmits(['choose'])
+
+const checkedImages = computed(() => {
+	return list.value.filter(item => item.checked)
+})
+
+const handleChooseChange = (item) => {
+	if (item.checked && checkedImages.value.length > 6) {
+		item.checked = false
+		return toast('warning', '只能选择六张图片', "error")
+	}
+	emit('choose', checkedImages.value)
 }
 
 defineExpose({

@@ -13,6 +13,7 @@ export function useLogin() {
 
 	const store = useStore()
 	const router = useRouter()
+	const loading = ref(false)
 
 	const { t } = useI18n()
 
@@ -58,6 +59,7 @@ export function useLogin() {
 				console.log('useManager.js Login提交表单: ', form)
 				// console.log(formRef.value)
 			}
+			loading.value = true
 			store.dispatch('login', form).then((res) => {
 
 				console.log("useManager.js Login成功 token:", res.token)
@@ -65,6 +67,9 @@ export function useLogin() {
 			})
 			.catch((error) => {
 				console.log("useManager.js Login失败 error:", error)
+			})
+			.finally(() => {
+				loading.value = false
 			})
 			
 
@@ -93,7 +98,8 @@ export function useLogin() {
 		form,
 		rules,
 		formRef,
-		onSubmit
+		onSubmit,
+		loading
 	}
 
 }

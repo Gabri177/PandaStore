@@ -21,7 +21,7 @@
 						</div>
 						<div class="flex justify-center items-center p-2 ">
 
-							<el-checkbox v-model="item.checked" @change="handleChooseChange(item)"></el-checkbox>
+							<el-checkbox v-show="isCheckable" v-model="item.checked" @change="handleChooseChange(item)"></el-checkbox>
 							
 							<el-button type="primary" size="small" text @click="handleEdit(item)">{{ $t('image.imageMain.edit') }}</el-button>
 							<el-button class="!m-0" type="primary" size="small" text @click="handleDelete(item)">{{ $t('image.imageMain.delete') }}</el-button>
@@ -267,6 +267,14 @@ const handleChooseChange = (item) => {
 defineExpose({
 	loadData,
 	openUploadDialog
+})
+
+defineProps({
+	
+	isCheckable: {
+		type: Boolean,
+		default: false
+	}
 })
 
 

@@ -34,7 +34,7 @@
 			</el-header>
 			<el-container>
 				<ImageAside ref="asideRef" @changeClass="handleAsideChange" />
-				<ImageMain ref="mainRef" @choose="handleChoose" />
+				<ImageMain ref="mainRef" @choose="handleChoose" :isCheckable="true" />
 			</el-container>
 		</el-container>
 		<template #footer>

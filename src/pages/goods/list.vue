@@ -186,7 +186,6 @@
 
 	</FormDrawer>
 	
-	<ImageMain ref="imageMainRef" />
 </template>
 
 <script setup>

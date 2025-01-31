@@ -80,7 +80,7 @@
 	<el-dialog v-model="dialogVisible">
     	<img w-full :src="dialogImageUrl" alt="Preview Image" />
   	</el-dialog>
-	<FormDrawer ref="formDrawerRef" formTitle="添加商品" :withHeader="true" :destroyOnClose="true" formSize="60%"
+	<FormDrawer ref="formDrawerRef" :formTitle="isAdd ?  '添加商品' : '编辑商品' " :withHeader="true" :destroyOnClose="true" formSize="60%"
 		@submit="handleSubmit">
 
 		<el-form :model="formData" :rules="rules" ref="formRef" label-width="120px" class="p-4">
@@ -212,6 +212,7 @@ let selectedGoodsIds = [];
 const formRef = ref(null);
 const categories = ref([]);
 const imageMainRef = ref(null);
+const isAdd = ref(true);
 
 const formData = ref({
 	name: '',
@@ -302,9 +303,46 @@ const handleSwitchChange = (rowInfo, val) => {
 	console.log("Switch change: ",rowInfo,  val);
 };
 
+///////////////////////////////////////////////////////////////// 编辑商品
+
+const handleEdit = (row) => {
+	isAdd.value = false;
+	formDrawerRef.value.open();
+	formData.value = { ...row };
+	console.log("Edit goods: ", row);
+};
+
 ///////////////////////////////////////////////////////////////// 添加商品
 
 const handleAdd = () => {
+	isAdd.value = true;
+	formData.value = {
+		id: '',
+		avatar: '',
+		name: '',
+		code: '',
+		barcode: '',
+		location: '',
+		state: 'onSale',
+		lowestPrice: '',
+		middlePrice1: '',
+		middlePrice2: '',
+		highestPrice: '',
+		lowestPriceDiscount: '',
+		middlePrice1Discount: '',
+		middlePrice2Discount: '',
+		highestPriceDiscount: '',
+		saleUnit: '',
+		minPurchaseUnit: '',
+		category: '',
+		stock: 0,
+		variantCode: '',
+		variantName: '',
+		createTime: '',
+		editTime: '',
+		sales: '',
+		bannersImage:[]
+	};
 	console.log("Add goods");
 	formDrawerRef.value.open();
 };
@@ -367,14 +405,6 @@ const handleDelete = (row) => {
 			toast("取消删除", "info");
 			console.log("Cancel delete goods");
 		});
-};
-
-///////////////////////////////////////////////////////////////// 编辑商品
-
-const handleEdit = (row) => {
-	formDrawerRef.value.open();
-	formData.value = { ...row };
-	console.log("Edit goods: ", row);
 };
 
 ///////////////////////////////////////////////////////////////// 批量删除

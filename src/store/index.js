@@ -63,6 +63,7 @@ const store = createStore({
 				login({username, password}).then(res => {
 					// console.log('login success: ', res)
 					commit('SET_USER_INFO', res)
+					console.log('SET_USER_INFO called: ', res)
 					toast(t('login.loginAlert_title_success'), t('login.loginStatus_success'), 'success')
 					setToken(res.token, res.expires)
 					resolve(res)

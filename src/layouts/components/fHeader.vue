@@ -21,7 +21,7 @@
 			<el-dropdown class="dropdown" @command="handleCommand">
 				<span class="el-dropdown-link text-light-50 flex items-center text-xl">
 					<el-avatar :size="25" :src="$store.state.user.avatar" class="mr-2" />
-					{{ $store.state.user.username }}
+					{{ $store.state.user.displayName }}
 					<el-icon class="el-icon--right"><arrow-down /></el-icon>
 				</span>
 				<template #dropdown>

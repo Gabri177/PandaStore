@@ -1,6 +1,6 @@
 <template>
 	<el-row :gutter="20" class="mt-5">
-		<el-col :span="3" :offset="0" v-for="(item, index) in iconNavs" :key="index">
+		<el-col :xs="24" :sm="12" :md="8" :lg="3" :span="3" :offset="0" v-for="(item, index) in iconNavs" :key="index">
 			<el-card shadow="hover" @click="$router.push(item.path)">
 				<div class="flex items-center justify-center cursor-pointer flex-col"> 
 					<el-icon :size="25" :class="item.color">

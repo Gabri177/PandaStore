@@ -2,7 +2,7 @@
 	<div>
 		<el-row :gutter="20" v-permission="['getStatistics1,GET']">
 			<template v-if="panels.length == 0">
-				<el-col :span="6" v-for="i in 4" :key="i">
+				<el-col :xs="6" :sm="6" :md="6" :lg="6" :offset="0" :span="6" v-for="i in 4" :key="i">
 					<el-skeleton style="width: 100%" animated loading>
 						<template #template>
 							<el-card shadow="hover" class="border-0">
@@ -25,7 +25,7 @@
 				</el-col>
 			</template>
 
-			<el-col :span="6" :offset="0" v-for="(item, index) in panels" :key="index">
+			<el-col :xs="24" :sm="12" :md="8" :lg="6" :offset="0" :span="6"  v-for="(item, index) in panels" :key="index">
 				<el-card shadow="hover" class="border-0">
 					<template #header>
 
@@ -59,10 +59,10 @@
 		<IndexNavs />
 
 		<el-row :gutter="20" class="mt-5">
-			<el-col :span="12" :offset="0">
+			<el-col :xs="24" :sm="12" :md="16" :lg="16" :span="12" :offset="0">
 				<IndexChart v-permission="['getStatistics3,GET']" />
 			</el-col>
-			<el-col :span="12" :offset="0" v-permission="['getStatistics2,GET']">
+			<el-col :xs="24" :sm="12" :md="8" :lg="8" :span="12"  :offset="0" v-permission="['getStatistics2,GET']">
 				<IndexCard class="mb-3" title="店铺信息" tip="店铺及商品信息" :btns="goods" />
 				<IndexCard title="交易提示" tip="需要立即处理的订单" :btns="order" />
 			</el-col>

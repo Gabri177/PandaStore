@@ -19,10 +19,8 @@
 		<el-table-column :label="table_title" width="200">
 			<template #default="scope">
 				<div class="flex items-center">
-					<el-avatar :size="40" :src= "scope.row.avatar">
-						<img
-							src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
-						/>
+					<el-avatar :size="40" :src="scope.row.avatar">
+						<img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png" />
 					</el-avatar>
 					<div class="ml-3">
 						<h6>{{ scope.row.username }}</h6>
@@ -236,7 +234,7 @@ getData()
 
 
 <style scope>
-.el-card__body {
+/* .el-card__body {
 	padding-bottom: 0;
-}
+} */
 </style>

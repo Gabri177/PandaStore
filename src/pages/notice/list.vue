@@ -216,7 +216,7 @@ getData()
 
 
 <style scope>
-.el-card__body {
+/* .el-card__body {
 	padding-bottom: 0;
-}
+} */
 </style>

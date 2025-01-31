@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from '~/composables/auth.js';
+import { getLoginToken } from '~/composables/auth.js';
 
 
 const apiBaseURL = import.meta.env.VITE_API_BASE_URL;
@@ -16,7 +16,7 @@ const service = axios.create({
 service.interceptors.request.use(function (config) {
     // Haz algo antes que la petición se ha enviada
 
-    const token = getToken()
+    const token = getLoginToken()
 
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`; // Bearer 是常见的 Token 前缀

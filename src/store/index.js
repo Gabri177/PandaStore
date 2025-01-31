@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import { login, getInfo } from '~/api/manager'
-import { setToken, removeToken } from '~/composables/auth.js'
+import { setLoginToken, removeLoginToken, setToken, getLoginToken } from '~/composables/auth.js'
 import { lang } from '~/lang'
 import { toast } from '~/composables/util'
 import { logout } from '../api/manager'
@@ -42,7 +42,7 @@ const store = createStore({
 		getinfo({commit}) {
 			return new Promise((resolve, reject) => {
 				getInfo().then(res => {
-					commit('SET_USER_INFO', res)
+					//commit('SET_USER_INFO', res)
 
 					//////////////////////////////////////////
 					//获取用户信息成功后，获取用户的菜单 权限
@@ -63,9 +63,11 @@ const store = createStore({
 				login({username, password}).then(res => {
 					// console.log('login success: ', res)
 					commit('SET_USER_INFO', res)
+					console.log ("type of res: ", typeof res, typeof JSON.stringify(res))
+					setToken('userInfo', res)
 					console.log('SET_USER_INFO called: ', res)
 					toast(t('login.loginAlert_title_success'), t('login.loginStatus_success'), 'success')
-					setToken(res.token, res.expires)
+					setLoginToken(res.token, res.expires)
 					resolve(res)
 				}).catch(error => {
 					toast(t('login.loginAlert_title_failed'), t('login.loginStatus_failed'), 'error')
@@ -77,7 +79,7 @@ const store = createStore({
 		//用户登出
 		logout({commit}) {
 			
-			removeToken()
+			removeLoginToken()
 			commit('SET_USER_INFO', {})
 		}
 	}

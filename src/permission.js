@@ -1,5 +1,5 @@
 import { router, addRoutes } from "~/router"
-import { getToken, setToken, isTokenExpired, removeToken } from "~/composables/auth"
+import { getLoginToken, setLoginToken, isTokenExpired, removeLoginToken, getToken } from "~/composables/auth"
 import { toast, showFullScreenLoading, hideFullScreenLoading } from "~/composables/util"
 import { lang } from "~/lang"
 import store from "~/store"
@@ -16,7 +16,15 @@ let hasGetInfo = false
 router.beforeEach(async (to, from, next) => {
 	
 	showFullScreenLoading()
-	const token = getToken()
+	const token = getLoginToken()
+	const userInfo = getToken('userInfo')
+	
+	console.log ('typeof userInfo: ', typeof userInfo)
+	console.log ('tyoeif token: ', typeof token)
+	//如果有用户信息
+	if (userInfo) {
+		store.commit('SET_USER_INFO', userInfo)
+	}
 	console.log('permission.js token: ', token)
 
 	//如果没有token并且不是登录页面
@@ -46,7 +54,7 @@ router.beforeEach(async (to, from, next) => {
 
 	if (token && isTokenExpired()) {
 		toast('警告', '登录已过期, 请重新登陆!', 'warning')
-		removeToken()
+		removeLoginToken()
 		router.push('/')
 	}
 

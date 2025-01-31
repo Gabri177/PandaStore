@@ -25,10 +25,10 @@
 
 <script setup>
 import { uploadImageAction } from '~/api/image';
-import { getToken } from '~/composables/auth';
+import { getLoginToken } from '~/composables/auth';
 import { toast } from '~/composables/util';
 import { lang } from '~/lang';
-const token = getToken();
+const token = getLoginToken();
 const { t } = lang.global;
 
 const handleSuccess = (response, uploadFile, uploadFiles) => {

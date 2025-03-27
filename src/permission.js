@@ -22,17 +22,17 @@ router.beforeEach(async (to, from, next) => {
 	console.log ('typeof userInfo: ', typeof userInfo)
 	console.log ('tyoeif token: ', typeof token)
 	//如果有用户信息
-	if (userInfo) {
-		store.commit('SET_USER_INFO', userInfo)
-	}
-	console.log('permission.js token: ', token)
+	// if (userInfo) {
+	// 	store.commit('SET_USER_INFO', userInfo)
+	// }
+	// console.log('permission.js token: ', token)
 
-	//如果没有token并且不是登录页面
-	if (!token && to.path != '/login') {
+	// //如果没有token并且不是登录页面
+	// if (!token && to.path != '/login') {
 
-		toast(t('router_toast.not_login_title'), t('router_toast.not_login_msg'), 'error')
-		return next({path: '/login'})
-	} 
+	// 	toast(t('router_toast.not_login_title'), t('router_toast.not_login_msg'), 'error')
+	// 	return next({path: '/login'})
+	// } 
 	
 	//防止重复登录
 	if (token && to.path == '/login') {

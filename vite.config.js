@@ -30,5 +30,5 @@ export default defineConfig({
       },
     },
   },
-   base: '/PandaStore/'
+   //base: '/PandaStore/'
 })

@@ -32,13 +32,13 @@ export function getToken(key) {
 export function setLoginToken(token, expirationDateStr) {
 
 	const expirationDate = new Date(expirationDateStr)
-	cookie.set(constants.COOKIE_SET.token_expires_name, expirationDateStr)
-	cookie.set(constants.COOKIE_SET.token_name, token, { expires: expirationDate })
+	//cookie.set(constants.COOKIE_SET.token_expires_name, expirationDateStr)
+	cookie.set(constants.COOKIE_SET.token_name, token)
 }
 
 export function removeLoginToken() {
 	cookie.remove(constants.COOKIE_SET.token_name)
-	cookie.remove(constants.COOKIE_SET.token_expires_name)
+	//cookie.remove(constants.COOKIE_SET.token_expires_name)
 }
 
 

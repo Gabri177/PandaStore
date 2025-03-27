@@ -67,7 +67,7 @@ const store = createStore({
 					setToken('userInfo', res)
 					console.log('SET_USER_INFO called: ', res)
 					toast(t('login.loginAlert_title_success'), t('login.loginStatus_success'), 'success')
-					setLoginToken(res.token, res.expires)
+					setLoginToken(res.token, res?.expires)
 					resolve(res)
 				}).catch(error => {
 					toast(t('login.loginAlert_title_failed'), t('login.loginStatus_failed'), 'error')

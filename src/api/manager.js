@@ -5,8 +5,7 @@ import { test } from '~/default/constant';
 
 //登录
 export function login(data) {
-
-	if (test.trigger != true) {  // 这里设置为真的api 已经用不等于来接通真的api
+	if (test.trigger  == true) {  // 这里设置为真的api 已经用不等于来接通真的api
 		return test.login.success
 	}else {
 		return axios.post('/Admin/TenantLogin', {
